@@ -1,68 +1,55 @@
 "use client";
-import Image from 'next/image'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function Hero() {
   
-  const blocksRef = useRef<(HTMLAnchorElement | null)[]>([])
+  const titleRef = useRef<HTMLParagraphElement>(null);
+  const MAX_BLUR = 20;
 
   useEffect(() => {
-    // Alert on page load
-    alert('This page is currently under development');
-  }, [])
+    const handleScroll = () => {
+      var scrollY = window.scrollY;
+      var saveScrollY = scrollY;
+      scrollY = saveScrollY + window.scrollY;
+      // Map scroll position to a blur radius (0–MAX_BLUR px)
+      const blurValue = Math.min(saveScrollY / 50, MAX_BLUR);
+      if (titleRef.current) {
+        titleRef.current.style.filter = `blur(${blurValue}px)`;
+      }
 
-  useEffect(() => {
-    const blocks = blocksRef.current
-    let latestScroll = 0
-    let ticking = false
-
-    interface BlockElement extends HTMLAnchorElement {
-      dataset: {
-      depth: string;
-      };
-    }
-
-    const updateParallax = (scrollY: number) => {
-      (blocks as BlockElement[]).forEach((block) => {
-      if (!block) return;
-      const depth = parseFloat(block.dataset.depth);
-      const scale = 1 + scrollY * depth * 0.0007;
-      const translateY = scrollY * depth * 0.3;
-      block.style.transform = `translateY(-${translateY}px) scale(${scale})`;
-      });
+      if (blurValue < MAX_BLUR) {
+        window.scrollTo(0, 0);
+      } else {
+        // Blur complete: remove listener to restore normal scrolling
+        window.removeEventListener('scroll', handleScroll);
+      }
     };
 
-    const onScroll = () => {
-      latestScroll = window.scrollY
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          updateParallax(latestScroll)
-          ticking = false
-        })
-        ticking = true
-      }
-    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
-    
-
-    window.addEventListener('scroll', onScroll)
-    updateParallax(window.scrollY)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  useEffect(() => {
+    alert('This page is currently under development');
+  }, []);
 
   return (
-    <div>
-      <div id='hero-div'>
-        <p id='hero-title'>portfolio</p>
-        <Image
-          id='hero-image'
-          src='/assets/profile_pic.png'
-          alt='profile-pic'
-          width={200}
-          height={200}
-        />
-      </div>
-    </div>
-  )
+    <section id="hero-div">
+      <p id="hero-title" ref={titleRef}>
+        portfolio
+      </p>
+
+      <Image
+        id="hero-image"
+        src="/assets/profile_pic.png"
+        alt="profile-pic"
+        width={200}
+        height={200}
+      />
+    </section>
+  );
 }
