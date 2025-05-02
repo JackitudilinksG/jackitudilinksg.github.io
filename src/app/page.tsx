@@ -48,10 +48,10 @@ export default function Hero() {
       <div id='hero-div'>
         <p id='hero-title'>portfolio</p>
         <Image
-          src='./public/profile_pic.png'
+          src='C:\Users\jacki\Documents\GitHub\JackitudilinksG.github.io\public\profile_pic.png'
           alt='profile-pic'
-          width={500}
-          height={500}
+          width={100}
+          height={100}
         />
       </div>
     </div>
