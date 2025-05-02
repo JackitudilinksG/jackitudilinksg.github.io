@@ -48,7 +48,7 @@ export default function Hero() {
       <div id='hero-div'>
         <p id='hero-title'>portfolio</p>
         <Image
-          src='/public/profile_pic.png'
+          src='./public/profile_pic.png'
           alt='profile-pic'
           width={500}
           height={500}
