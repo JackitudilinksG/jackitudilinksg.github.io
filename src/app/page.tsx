@@ -45,13 +45,15 @@ export default function Hero() {
 
   return (
     <div>
+    <h3>this page is currently under development</h3>
       <div id='hero-div'>
         <p id='hero-title'>portfolio</p>
         <Image
-          src='C:\Users\jacki\Documents\GitHub\JackitudilinksG.github.io\public\profile_pic.png'
+          id='hero-image'
+          src='/assets/profile_pic.png'
           alt='profile-pic'
-          width={100}
-          height={100}
+          width={150}
+          height={150}
         />
       </div>
     </div>
