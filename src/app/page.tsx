@@ -4,7 +4,13 @@ import Image from 'next/image'
 import React, { useEffect, useRef } from 'react'
 
 export default function Hero() {
+  
   const blocksRef = useRef<(HTMLAnchorElement | null)[]>([])
+
+  useEffect(() => {
+    // Alert on page load
+    alert('This page is currently under development');
+  }, [])
 
   useEffect(() => {
     const blocks = blocksRef.current
@@ -38,6 +44,8 @@ export default function Hero() {
       }
     }
 
+    
+
     window.addEventListener('scroll', onScroll)
     updateParallax(window.scrollY)
     return () => window.removeEventListener('scroll', onScroll)
@@ -45,15 +53,14 @@ export default function Hero() {
 
   return (
     <div>
-    <h3>this page is currently under development</h3>
       <div id='hero-div'>
         <p id='hero-title'>portfolio</p>
         <Image
           id='hero-image'
           src='/assets/profile_pic.png'
           alt='profile-pic'
-          width={150}
-          height={150}
+          width={200}
+          height={200}
         />
       </div>
     </div>

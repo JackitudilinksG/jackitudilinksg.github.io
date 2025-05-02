@@ -47,21 +47,22 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-
+  position: relative;
   height: 100vh;
-  padding: 0 80px;
 }
 
 #hero-title {
-  font-size: 200px;
+  font-size: 350px;
   line-height: 72px;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  text-align: center;
   z-index: 1;
   font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 50px;
 }
 
 #hero-image {
   border-radius: 2%;
   z-index: 3;
+  position: absolute;
 }
