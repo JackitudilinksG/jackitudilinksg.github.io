@@ -8,6 +8,10 @@ export default function Hero() {
   const MAX_BLUR = 10;
 
   useEffect(() => {
+    alert('This page is currently under development');
+  }, []);
+  
+  useEffect(() => {
     const handleScroll = () => {
       // 1. Get the current scroll offset
       const scrollY = window.scrollY;

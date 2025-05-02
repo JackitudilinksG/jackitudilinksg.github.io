@@ -16,6 +16,16 @@ body {
   overflow-x: hidden;
 }
 
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+  .element {
+    font-size: 16px;
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
