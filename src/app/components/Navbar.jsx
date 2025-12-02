@@ -3,16 +3,18 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import styles from '../styles/Navbar.module.css'
+import Image from 'next/image'
+import { useTheme } from '../contexts/ThemeContext'
 
 export default function Navbar() {
     const pathname = usePathname() || '/'
     const [open, setOpen] = useState(false)
+    const { theme, toggleTheme } = useTheme()
 
     const links = [
         { href: '/', label: 'Home' },
         { href: '/about', label: 'About' },
         { href: '/projects', label: 'Projects' },
-        { href: '/blog', label: 'Blog' },
         { href: '/contact', label: 'Contact' },
     ]
 
@@ -20,7 +22,13 @@ export default function Navbar() {
         <nav className={styles.nav}>
             <div className={styles.container}>
                 <Link href="/" className={styles.brand} onClick={() => setOpen(false)}>
-                    Jackitudilinks
+                    <Image
+                        src="/assets/Logo_colour.png"
+                        alt="Description of the image"
+                        width={33.8}
+                        height={29.5}
+                        priority
+                    />
                 </Link>
 
                 <button
@@ -48,6 +56,15 @@ export default function Navbar() {
                         )
                     })}
                 </ul>
+
+                <button
+                    className={styles.themeToggle}
+                    onClick={toggleTheme}
+                    aria-label="Toggle dark mode"
+                    title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                >
+                    {theme === 'light' ? '🌙' : '☀️'}
+                </button>
             </div>
         </nav>
     )

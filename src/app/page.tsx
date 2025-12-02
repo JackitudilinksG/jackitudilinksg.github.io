@@ -8,10 +8,6 @@ export default function Hero() {
   const MAX_BLUR = 10;
 
   useEffect(() => {
-    alert('This page is currently under development');
-  }, []);
-
-  useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const blurValue = Math.min(scrollY / 50, MAX_BLUR);

@@ -1,13 +1,13 @@
+/* Default light mode */
 :root {
-  --background: #171717;
-  --foreground: #F2F2F2;
+  --background: #F2F2F2;
+  --foreground: #0a0a0a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #F2F2F2;
-    --foreground: #0a0a0a;
-  }
+/* Dark mode */
+[data-theme="dark"] {
+  --background: #171717;
+  --foreground: #F2F2F2;
 }
 
 html,
@@ -43,12 +43,6 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
 
 #container {
