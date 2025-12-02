@@ -37,15 +37,18 @@ export default function Hero() {
   return (
     <section id="container" className="relative h-screen overflow-auto">
       <div id='hero-section'>
-      <p id="hero-title" ref={titleRef}>portfolio</p>
-      <Image
-        id="hero-image"
-        src="/assets/profile_pic.png"
-        alt="profile-pic"
-        width={200}
-        height={200}
-        className="absolute top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2"
-      />
+        <p id="hero-title" ref={titleRef}>portfolio</p>
+        <Image
+          id="hero-image"
+          src="/assets/profile_pic.png"
+          alt="profile-pic"
+          width={200}
+          height={200}
+          className="absolute top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2"
+        />
+      </div>
+      <div>
+        <p>HELLO WORLD</p>
       </div>
       {/* …other content below… */}
     </section>
