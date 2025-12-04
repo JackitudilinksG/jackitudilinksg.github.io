@@ -1,14 +1,60 @@
 .heroContainer {
-    height: 200vh;
-    position: relative;
-  }
-  .hero {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow: hidden;
-  }
+  height: 200vh;
+  position: relative;
+  overflow: auto;
+  z-index: 10;
+}
+.hero {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
 
-#container {
-  color: rgba(39, 37, 69, 1)
+.world {
+  height: 100vh;
+  overflow: auto;
+  color: rgba(39, 37, 69, 1);
+}
+
+.content {
+  position: relative;
+  z-index: 30;
+  width: 80%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--foreground);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(12, 13, 20, 0.12);
+  border: 1px solid rgba(16, 24, 40, 0.06);
+}
+
+/* make hero-section a positioned container so the image can be absolutely centered within it */
+#hero-section {
+  position: relative;
+  height: 100vh;
+  z-index: 9;
+}
+
+/* absolutely center the image inside #hero-section */
+#hero-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+
+/* dark-mode tweak so the box remains visible on dark backgrounds */
+[data-theme="dark"] .content {
+  background-color: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  color: var(--foreground);
 }

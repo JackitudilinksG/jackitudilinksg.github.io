@@ -86,7 +86,7 @@
     background: rgba(230, 238, 248, 0.06);
 }
 .links a.active {
-    background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+    background: linear-gradient(90deg, #eb9925 0%, #e42705 100%);
     color: white;
 }
 

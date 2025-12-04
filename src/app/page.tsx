@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import styles from './page.module.css';
 
 export default function Hero() {
   const titleRef = useRef<HTMLParagraphElement>(null);
@@ -31,7 +32,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="container" className="relative h-screen overflow-auto">
+    <section id="container" className={styles.world}>
       <div id='hero-section'>
         <p id="hero-title" ref={titleRef}>portfolio</p>
         <Image
@@ -40,10 +41,9 @@ export default function Hero() {
           alt="profile-pic"
           width={200}
           height={200}
-          className="absolute top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2"
         />
       </div>
-      <div>
+      <div className={styles.content}>
         <p>HELLO WORLD</p>
       </div>
       {/* …other content below… */}
