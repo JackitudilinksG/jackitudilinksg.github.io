@@ -1,60 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  min-height: 400dvh;
+}
+
 .heroContainer {
-  height: 200vh;
+  height: 100dvh;
   position: relative;
   overflow: auto;
   z-index: 10;
 }
-.hero {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-}
 
 .world {
-  height: 100vh;
+  height: 100dvh;
   overflow: auto;
-  color: rgba(39, 37, 69, 1);
+  color: rgb(0, 0, 0);
 }
 
 .content {
-  position: relative;
   z-index: 30;
-  width: 80%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  background-color: rgba(255, 255, 255, 0.95);
+  width: 90%;
+  margin: 150dvh auto 2rem; /* start the box at 300vh from the top */
+  background-color: rgba(255, 255, 255, 1);
   color: var(--foreground);
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(12, 13, 20, 0.12);
-  border: 1px solid rgba(16, 24, 40, 0.06);
+  border: 1px solid rgba(16, 24, 40, 0.06); 
 }
 
-/* make hero-section a positioned container so the image can be absolutely centered within it */
-#hero-section {
-  position: relative;
-  height: 100vh;
-  z-index: 9;
+/* make heroSection a container (spacer) - actual visual elements are fixed */
+.heroSection {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* allow scrolling through */
 }
 
-/* absolutely center the image inside #hero-section */
-#hero-image {
-  position: absolute;
+/* keep the hero title fixed and centered while scrolling */
+.heroTitle {
+  font-size: 350px;
+  line-height: 1;
+  font-weight: 700;
+  font-family: 'Times New Roman', serif;
+  line-height: 1;
+  z-index: 1;
+}
+
+/* keep the hero image fixed and centered while scrolling (behind the title)
+   adjust size and rounding as needed */
+.heroImage {
   top: 50%;
   left: 50%;
-  z-index: 10;
-  transform: translate(-50%, -50%);
-}
-
-
-
-
-
-/* dark-mode tweak so the box remains visible on dark backgrounds */
-[data-theme="dark"] .content {
-  background-color: rgba(10, 10, 10, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  color: var(--foreground);
+  transform: translate(0%, -110%);
+  width: 200px;
+  border-radius: 8px;
+  z-index: 2;
 }

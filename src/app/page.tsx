@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import styles from './page.module.css';
+import styles from './styles/page.module.css';
 
 export default function Hero() {
   const titleRef = useRef<HTMLParagraphElement>(null);
@@ -32,11 +32,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="container" className={styles.world}>
-      <div id='hero-section'>
-        <p id="hero-title" ref={titleRef}>portfolio</p>
+    <section className={styles.container}>
+      <div className={styles.heroSection}>
+        <p className={styles.heroTitle} ref={titleRef}>portfolio</p>
         <Image
-          id="hero-image"
+          className={styles.heroImage}
           src="/assets/profile_pic.png"
           alt="profile-pic"
           width={200}
