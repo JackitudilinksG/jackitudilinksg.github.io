@@ -1,0 +1,47 @@
+.topText {
+    height: 20dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    row-gap: 10px;
+}
+
+.CTA {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    column-gap: 10px;
+
+    color: #EAEAE1;
+    background-color: #1F1D1B;
+}
+
+.date {
+    font-size: 16px;
+}
+
+.ctaContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    row-gap: 10px;
+}
+
+.secondContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.ctaButton {
+    background-color: orange;
+}
+
+.ctaImage {
+
+}

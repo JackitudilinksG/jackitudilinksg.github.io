@@ -50,7 +50,6 @@ export default function Hero() {
       <div className={styles.content}>
         <MainContent />
       </div>
-      {/* …other content below… */}
     </section>
   );
 }

@@ -27,7 +27,7 @@
   margin: 150dvh auto 2rem; /* start the box at 300vh from the top */
   background-color: rgba(255, 255, 255, 1);
   color: var(--foreground);
-  border-radius: 16px;
+  border-radius: 5px;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(12, 13, 20, 0.12);
   border: 1px solid rgba(16, 24, 40, 0.06); 
