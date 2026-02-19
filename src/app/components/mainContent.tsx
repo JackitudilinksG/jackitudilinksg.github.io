@@ -1,11 +1,16 @@
-'use Client';
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import styles from '../styles/main.module.css';
 import getCurrentDateFormatted from './date';
-import Image from 'next/image'
+import Image from 'next/image';
 
 export default function MainContent() {
-  const date = getCurrentDateFormatted();
+  const [date, setDate] = useState('');
+
+  useEffect(() => {
+    setDate(getCurrentDateFormatted());
+  }, []);
 
   return (
     <section>
@@ -19,21 +24,26 @@ export default function MainContent() {
           <p className={styles.date}>{date}</p>
           <div className={styles.secondContent}>
             <h1>Second Content Area</h1>
-            <p>This is where the secondary content of the application will be displayed.</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipiscing elit.
+              Sit amet consectetur adipiscing elit quisque faucibus ex.
+            </p>
           </div>
           <div className={styles.ctaButton}>
-            <h2>Click Me!</h2>
+            <h2>Read More →</h2>
           </div>
         </div>
+
         <div className={styles.ctaImage}>
           <Image
             src="/assets/ctaImage.png"
             alt="Under Construction"
-            width={703/1.25}
-            height={497/1.25}
+            width={562}
+            height={398}
           />
         </div>
       </div>
     </section>
   );
 }
+  

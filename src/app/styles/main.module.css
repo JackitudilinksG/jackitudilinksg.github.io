@@ -39,7 +39,10 @@
 }
 
 .ctaButton {
-    background-color: orange;
+    color: rgb(26, 26, 26);
+    background-color: rgb(214, 107, 0);
+    padding: 10px;
+    font-size: 10px;
 }
 
 .ctaImage {
