@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import styles from '../styles/main.module.css';
 import getCurrentDateFormatted from './date';
 import Image from 'next/image';
+import GitHubContributions from './GitHubContributions';
 
 export default function MainContent() {
   const [date, setDate] = useState('');
@@ -14,6 +15,7 @@ export default function MainContent() {
 
   return (
     <section>
+      <GitHubContributions />
       <div className={styles.topText}>
         <h1>Main Content Area</h1>
         <p>This is where the main content of the application will be displayed.</p>

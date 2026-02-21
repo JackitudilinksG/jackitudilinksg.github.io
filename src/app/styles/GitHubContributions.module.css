@@ -1,0 +1,48 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: var(--background);
+    color: var(--foreground);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 26px 26px 53prgb(91, 91, 91)20;
+}
+
+.graph {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(53, 12px); /* 53 weeks */
+    grid-template-rows: repeat(7, 12px);    /* 7 days */
+    gap: 3px;
+    margin-top: 20px;
+}
+
+.sq {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background-color: var(--lvl-0);
+}
+
+/* Intensity Levels */
+.level0 { background-color: var(--lvl-0); }
+.level1 { background-color: var(--lvl-1); }
+.level2 { background-color: var(--lvl-2); }
+.level3 { background-color: var(--lvl-3); }
+.level4 { background-color: var(--lvl-4); }
+
+.legend {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    margin-top: 15px;
+    justify-content: flex-end;
+}

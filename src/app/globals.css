@@ -2,18 +2,17 @@
 :root {
   --background: #F2F2F2;
   --foreground: #0a0a0a;
+  --lvl-0: #161b22;
+    --lvl-1: #0e4429;
+    --lvl-2: #006d32;
+    --lvl-3: #26a641;
+    --lvl-4: #39d353;
 }
 
 /* Dark mode */
 [data-theme="dark"] {
   --background: #171717;
   --foreground: #F2F2F2;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
