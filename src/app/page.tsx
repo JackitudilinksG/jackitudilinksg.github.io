@@ -9,8 +9,24 @@ export default function Hero() {
   const titleRef = useRef<HTMLParagraphElement>(null);
   const MAX_BLUR = 10;
 
+  const elementRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // show alert once on page load
+      const handleScroll = () => {
+          if (elementRef.current) {
+              if (window.scrollY > 900) {
+                  elementRef.current.classList.add(styles.hidden);
+              } else {
+                  elementRef.current.classList.remove(styles.hidden);
+              }
+          }
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
     alert('This page is under construction 🚧🏗️👷‍♂️');
 
     const handleScroll = () => {
@@ -47,7 +63,7 @@ export default function Hero() {
               width={200}
               height={200}
           />
-          <div className={styles.suggestion}>
+          <div ref={elementRef} className={styles.suggestion}>
               <p style={{padding: '15px 40px'}}>Scroll down to see more</p>
           </div>
         </div>
