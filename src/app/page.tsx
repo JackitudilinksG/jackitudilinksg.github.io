@@ -39,13 +39,18 @@ export default function Hero() {
     <section className={styles.container}>
       <div className={styles.heroSection}>
         <p className={styles.heroTitle} ref={titleRef}>portfolio</p>
-        <Image
-          className={styles.heroImage}
-          src="/assets/profile_pic.png"
-          alt="profile-pic"
-          width={200}
-          height={200}
-        />
+        <div className={styles.heroImageGroup}>
+          <Image
+              className={styles.heroImage}
+              src="/assets/profile_pic.png"
+              alt="profile-pic"
+              width={200}
+              height={200}
+          />
+          <div className={styles.suggestion}>
+              <p style={{padding: '15px 40px'}}>Scroll down to see more</p>
+          </div>
+        </div>
       </div>
       <div className={styles.content}>
         <MainContent />
