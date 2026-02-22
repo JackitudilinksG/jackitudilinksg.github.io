@@ -45,7 +45,6 @@ export default function GitHubContributions() {
             <div className={styles.stats}>
                 <p>Total Contributions (Last Year): <span>{calendar ? calendar.totalContributions : '...'}</span></p>
             </div>
-            <div className={styles.graphWrapper}>
                 <div className={styles.graph}>
                     {calendar && calendar.weeks.map((week, wi) =>
                         week.contributionDays.map((day, di) => (
@@ -57,7 +56,6 @@ export default function GitHubContributions() {
                         ))
                     )}
                 </div>
-            </div>
             {error && <p>{error}</p>}
             <div className={styles.legend}>
                 <span>Less</span>
