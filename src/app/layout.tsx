@@ -4,6 +4,7 @@ import "./globals.css";
 import ClientLayout from "./provider";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Footer from "./components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
