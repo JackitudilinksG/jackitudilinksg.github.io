@@ -1,0 +1,25 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.heading {
+  font-family: "DM Sans", "Helvetica Neue", sans-serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 500;
+  color: #111;
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+
+.subheading {
+  font-family: "DM Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}

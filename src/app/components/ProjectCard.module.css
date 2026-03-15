@@ -1,0 +1,119 @@
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.card {
+  background: #f0eeea;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+
+  /* Notched bottom-right corner using clip-path */
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% calc(100% - 36px),
+    calc(100% - 36px) 100%,
+    0% 100%
+  );
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Image ──────────────────────────────────────────── */
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+/* ── Body ───────────────────────────────────────────── */
+.body {
+  padding: 20px 24px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meta {
+  font-family: "DM Mono", "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #666;
+  margin: 0;
+}
+
+.title {
+  font-family: "DM Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #111;
+  margin: 0;
+}
+
+.description {
+  font-family: "DM Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.55;
+  margin: 0;
+
+  /* Clamp to 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px 20px;
+  border-top: 1px solid #dddbd7;
+  margin-top: auto;
+}
+
+.readMore {
+  font-family: "DM Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.9rem;
+  color: #111;
+}
+
+.arrow {
+  font-size: 1.1rem;
+  color: #111;
+  transition: transform 0.2s ease;
+}
+
+.card:hover .arrow {
+  transform: translateX(4px);
+}

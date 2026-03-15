@@ -1,0 +1,64 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* ── Cards grid ─────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Pagination ─────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.navBtn,
+.pageBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "DM Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.95rem;
+  color: #888;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
+  line-height: 1;
+}
+
+.navBtn:hover:not(:disabled),
+.pageBtn:hover:not(.active) {
+  color: #111;
+  background: #f0eeea;
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pageBtn.active {
+  color: #1a56db;
+  font-weight: 600;
+  background: none;
+}
