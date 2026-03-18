@@ -114,3 +114,20 @@
   }
   .links { gap: 1.5rem; }
 }
+
+@media (max-width: 768px) {
+  .deckWrap {
+    height:           280px;
+    transform:        scale(0.6);
+    transform-origin: center center;
+    /* negative margin compensates for the scaled-down height */
+    margin-bottom:    -60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .deckWrap {
+    transform:        scale(0.42);
+    margin-bottom:    -100px;
+  }
+}

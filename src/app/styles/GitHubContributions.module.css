@@ -1,36 +1,40 @@
 .container {
     background-color: var(--background);
-    color: var(--foreground);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 26px 26px 53prgb(91, 91, 91)20;
+    color:            var(--foreground);
+    padding:          1.5rem;
+    border-radius:    12px;
+}
+
+.stats {
+    margin-bottom: 0.75rem;
+    font-size:     0.9rem;
+}
+
+/* Scrollable wrapper — graph stays its natural size but doesn't break layout */
+.graphScroll {
+    width:      100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px; /* room for scrollbar */
 }
 
 .graph {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(53, 12px); /* 53 weeks */
-    grid-template-rows: repeat(7, 12px);    /* 7 days */
-    gap: 11.5px;
-    margin-top: 20px;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 53/7;
+    display:               grid;
+    grid-auto-flow:        column;
+    grid-template-columns: repeat(53, 10px);
+    grid-template-rows:    repeat(7, 10px);
+    gap:                   3px;
+    width:                 max-content; /* lets it be wider than container */
+    min-width:             0;
 }
 
 .sq {
-    width: 12px;
-    height: 12px;
+    width:         10px;
+    height:        10px;
     border-radius: 2px;
-    background-color: var(--lvl-0);
 }
 
-.graph .sq {
-    width: 22;
-    height: 22;
-}
-
-/* Intensity Levels */
 .level0 { background-color: var(--lvl-0); }
 .level1 { background-color: var(--lvl-1); }
 .level2 { background-color: var(--lvl-2); }
@@ -38,10 +42,10 @@
 .level4 { background-color: var(--lvl-4); }
 
 .legend {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    margin-top: 15px;
+    display:         flex;
+    align-items:     center;
+    gap:             5px;
+    font-size:       11px;
+    margin-top:      10px;
     justify-content: flex-end;
 }

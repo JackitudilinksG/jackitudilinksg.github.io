@@ -183,6 +183,30 @@ export const THEMES: Record<string, ProjectTheme> = {
     decor:        'grid-rules',
     panelTagline: 'WHY ZETA',
   },
+
+  'project-aurelia': {
+  bg:          '#0A0B14',
+  surface:     '#13141F',
+  accent:      '#C5F400',
+  accentText:  '#0A0B14',
+  text:        '#F0EEE8',
+  muted:       '#6B6A7A',
+  border:      '#1E1F2E',
+
+  fontImport:  'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;1,400&display=swap',
+  headingFont: "'Bebas Neue', Impact, sans-serif",
+  bodyFont:    "'Barlow', system-ui, sans-serif",
+
+  heroStyle:   'typographic',
+  heroOverlay: 'rgba(10,11,20,0)',
+
+  animation:   'slide-reveal',
+  ease:        'cubic-bezier(0.16, 1, 0.3, 1)',
+  duration:    '0.65s',
+
+  decor:       'marquee',
+  marqueeText: 'BRANDING ✦ GRAPHIC DESIGN ✦ WEB DESIGN ✦ DIGITAL MEDIA ✦ CREATIVE SOLUTIONS ✦',
+},
 };
 
 export const DEFAULT_THEME: ProjectTheme = THEMES['project-alpha'];

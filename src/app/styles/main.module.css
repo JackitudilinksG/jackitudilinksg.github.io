@@ -1,50 +1,63 @@
 .topText {
-    height: 20dvh;
-    display: flex;
+    height:         auto;
+    min-height:     15dvh;
+    display:        flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
-    row-gap: 10px;
+    align-items:    start;
+    row-gap:        10px;
+    padding:        1rem;
 }
 
 .CTA {
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
+    padding:         20px;
+    display:         flex;
+    flex-direction:  row;
     justify-content: space-between;
-    align-items: start;
-    column-gap: 10px;
-
-    color: #EAEAE1;
+    align-items:     start;
+    column-gap:      10px;
+    color:           #EAEAE1;
     background-color: #1F1D1B;
+    flex-wrap:       wrap; /* allows wrapping on small screens */
 }
 
-.date {
-    font-size: 16px;
-}
+.date { font-size: 14px; }
 
 .ctaContent {
-    display: flex;
+    display:        flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
-    row-gap: 10px;
+    align-items:    start;
+    row-gap:        10px;
+    min-width:      200px;
+    flex:           1;
 }
 
 .secondContent {
-    display: flex;
+    display:        flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items:    flex-start;
 }
 
 .ctaButton {
-    color: rgb(26, 26, 26);
+    color:            rgb(26, 26, 26);
     background-color: rgb(214, 107, 0);
-    padding: 10px;
-    font-size: 10px;
+    padding:          10px;
+    font-size:        10px;
+    cursor:           pointer;
 }
 
 .ctaImage {
+    flex-shrink: 0;
+}
 
+/* ── Mobile ── */
+@media (max-width: 640px) {
+    .CTA {
+        flex-direction: column;
+    }
+    .ctaImage {
+        display: none; /* hide the image on very small screens */
+    }
 }

@@ -22,15 +22,15 @@
 }
 
 .content {
-  z-index: 30;
-  width: 90%;
-  margin: 150dvh auto 2rem; /* start the box at 300vh from the top */
+  z-index:          30;
+  width:            90%;
+  margin:           clamp(80dvh, 150dvh, 150dvh) auto 2rem;
   background-color: rgba(255, 255, 255, 1);
-  color: var(--foreground);
-  border-radius: 5px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(12, 13, 20, 0.12);
-  border: 1px solid rgba(16, 24, 40, 0.06); 
+  color:            var(--foreground);
+  border-radius:    5px;
+  padding:          clamp(1rem, 3vw, 2rem);
+  box-shadow:       0 10px 30px rgba(12, 13, 20, 0.12);
+  border:           1px solid rgba(16, 24, 40, 0.06);
 }
 
 /* make heroSection a container (spacer) - actual visual elements are fixed */
@@ -46,10 +46,10 @@
 /* keep the hero title fixed and centered while scrolling */
 .heroTitle {
   grid-column: 1;
-  grid-row: 1;
-  position: relative;
-  z-index: -1;
-  font-size: 350px;
+  grid-row:    1;
+  position:    relative;
+  z-index:     -1;
+  font-size:   clamp(60px, 25vw, 350px);
   line-height: 1;
   font-weight: 700;
   font-family: 'Times New Roman', serif;
@@ -90,4 +90,11 @@
 .hidden {
     opacity: 0;
     pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .content {
+    width:  95%;
+    margin: 80dvh auto 2rem;
+  }
 }

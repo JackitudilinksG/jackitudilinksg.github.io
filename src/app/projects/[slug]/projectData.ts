@@ -441,6 +441,73 @@ export const PROJECTS: ProjectContent[] = [
       'We partner with independent labels and music libraries, officially clearing rights and selecting music perfectly suited to mood and format. No hassle — just the right music, in the right tone, delivered on time.',
     tags: ['Audio Branding', 'Licensing', 'Editorial Curation', 'Commercial Sync'],
   },
+
+  {
+  slug: 'project-aurelia',
+  heroImage: 'https://images.unsplash.com/photo-1634926878768-2a5b3c571d68?w=1400&q=80',
+  heroImageAlt: 'Creative agency work',
+
+  heroStatement: [
+    { text: 'CREATIVE'             },
+    { text: 'AGENCY.',  accent: true },
+    { text: 'DESIGNING' },
+    { text: 'FOR',      accent: true },
+    { text: 'SEAMLESS'  },
+    { text: '&',        accent: true },
+    { text: 'ENJOYABLE' },
+    { text: 'INTERACTIONS.' },
+  ],
+
+  type: 'Brand & Digital',
+  date: 'Jan 15, 2025',
+  title: 'Project Aurelia: Creative agency identity',
+  tagline: 'Where creativity meets strategy.',
+
+  overviewBody:
+    'With a team of passionate designers, marketers, and innovators, we specialise in delivering unique solutions that elevate your brand and captivate your audience.',
+
+  stats: [
+    { label: 'Happy Clients',    value: '500+' },
+    { label: 'Projects Done',    value: '125+' },
+    { label: 'Media Features',   value: '450+' },
+  ],
+
+  featureImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80',
+  featureImageAlt: 'Design work spread',
+  featureCaption: 'Over 10 years of experience trusted by global brands.',
+
+  sections: [
+    {
+      heading: 'Brand Building & Strategy.',
+      body: 'We craft identities that outlast trends — rooted in research, built for recognition, designed to scale across every touchpoint your audience encounters.',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+      imageAlt: 'Team strategy session',
+      imagePosition: 'right',
+    },
+    {
+      heading: 'Creative Digital Solution.',
+      body: 'From interaction design to full-stack builds, we bridge the gap between beautiful and functional — shipping products that perform as well as they look.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+      imageAlt: 'Digital dashboard',
+      imagePosition: 'left',
+    },
+    {
+      heading: 'Marketing & Campaign.',
+      body: 'Data-driven campaigns with a creative edge. We plan, execute, and optimise across channels to make sure the right people see the right message at the right time.',
+    },
+  ],
+
+  gallery: [
+    { src: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80', alt: 'Brand design' },
+    { src: 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=600&q=80', alt: 'Typography' },
+    { src: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80', alt: 'Layout system' },
+  ],
+
+  closingHeading: 'We are creators, innovators, and storytellers.',
+  closingBody:
+    "Committed to innovation and excellence, we're storytellers and strategic thinkers who don't just follow trends — we set them.",
+  tags: ['Branding', 'Web Design', 'Digital Media', 'Campaign Strategy'],
+},
 ];
 
 export function getProject(slug: string): ProjectContent | null {

@@ -273,6 +273,31 @@ function Headphones({ color, muted }: ObjectProps) {
   );
 }
 
+function FourPointStar({ color, muted }: ObjectProps) {
+  return (
+    <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.obj}>
+      {/* Outer 4-point star */}
+      <path
+        d="M 80 10 L 92 68 L 150 80 L 92 92 L 80 150 L 68 92 L 10 80 L 68 68 Z"
+        fill={color}
+      />
+      {/* Inner cutout */}
+      <path
+        d="M 80 38 L 87 73 L 122 80 L 87 87 L 80 122 L 73 87 L 38 80 L 73 73 Z"
+        fill={muted}
+        opacity="0.35"
+      />
+      {/* Centre dot */}
+      <circle cx="80" cy="80" r="8" fill={color} opacity="0.9" />
+      {/* Corner accent dots */}
+      <circle cx="80"  cy="10"  r="4" fill={color} opacity="0.5" />
+      <circle cx="150" cy="80"  r="4" fill={color} opacity="0.5" />
+      <circle cx="80"  cy="150" r="4" fill={color} opacity="0.5" />
+      <circle cx="10"  cy="80"  r="4" fill={color} opacity="0.5" />
+    </svg>
+  );
+}
+
 // ─── Registry ─────────────────────────────────────────────────────────────────
 
 const HERO_OBJECTS: Record<string, React.ComponentType<ObjectProps>> = {
@@ -284,6 +309,7 @@ const HERO_OBJECTS: Record<string, React.ComponentType<ObjectProps>> = {
   'project-epsilon': AsteriskMark,
   'project-race':    RaceHelmet,
   'project-zeta':    Headphones,
+  'project-aurelia': FourPointStar,
 };
 
 // ─── Exported component ───────────────────────────────────────────────────────
