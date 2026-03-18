@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import styles from '../styles/SocialFanDeck.module.css';
 
 interface SocialLink {
@@ -145,7 +146,7 @@ export default function SocialFanDeck() {
             ref={el => { cardRefs.current[i] = el; }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={src} alt="" draggable={false} />
+            <Image src={src} alt="" fill sizes="160px" draggable={false} style={{ objectFit: 'cover', pointerEvents: 'none', userSelect: 'none' }} />
           </div>
         ))}
       </div>

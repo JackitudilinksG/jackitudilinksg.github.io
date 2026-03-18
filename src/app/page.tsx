@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './styles/page.module.css';
 import MainContent from './components/mainContent';
@@ -61,6 +61,7 @@ export default function Hero() {
               alt="profile-pic"
               width={200}
               height={200}
+              priority
           />
           <div ref={elementRef} className={styles.suggestion}>
               <p style={{padding: '15px 40px'}}>Scroll down to see more</p>

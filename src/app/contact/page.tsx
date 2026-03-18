@@ -12,8 +12,8 @@ export default function ContactPage() {
         <p className={styles.sub}>
           Open to new projects, collaborations, and conversations.
         </p>
-        <a className={styles.emailLink} href="mailto:deric@example.com">
-          deric@example.com
+        <a className={styles.emailLink} href="mailto:dericjojo8@gmail.com">
+          dericjojo8@gmail.com
         </a>
       </header>
 

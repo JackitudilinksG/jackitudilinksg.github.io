@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { ProjectContent, HeroToken } from './projectData';
 import type { ProjectTheme } from './themes';
 import styles from './ProjectTemplate.module.css';
@@ -69,17 +70,17 @@ function useReveal() {
   }, []);
 }
 
-// ─── Ruler strip (reused across panels aesthetic) ─────────────────────────────
+// ─── Ruler strip ──────────────────────────────────────────────────────────────
+
 function PanelsRuler({ label }: { label?: string }) {
-  const text = label ?? 'Project Zeta';
-  const repeated = Array.from({ length: 6 }, () => text);
+  const text = label ?? 'Project';
   return (
     <div className={styles.panelsRuler}>
       <div className={styles.panelsRulerDot} />
-      {repeated.map((t, i) => (
+      {Array.from({ length: 6 }, (_, i) => (
         <span key={i} style={{ display: 'contents' }}>
-          <span className={styles.panelsRulerLabel}>{t}</span>
-          {i < repeated.length - 1 && <span className={styles.panelsRulerLine} />}
+          <span className={styles.panelsRulerLabel}>{text}</span>
+          {i < 5 && <span className={styles.panelsRulerLine} />}
         </span>
       ))}
       <div className={styles.panelsRulerDot} />
@@ -123,7 +124,6 @@ function Decoration({ style, marqueeText }: { style: ProjectTheme['decor']; marq
       </div>
     );
   }
-  // grid-rules: no global decoration — rulers are embedded per-section
   if (style === 'grid-rules') return null;
   if (style === 'grain') return (
     <svg className={styles.decorGrain} xmlns="http://www.w3.org/2000/svg" width="200" height="200">
@@ -175,34 +175,32 @@ function StatementHero({ tokens, type, date, cutout }: { tokens: HeroToken[]; ty
 }
 
 function PanelsHero({ project, theme }: { project: ProjectContent; theme: ProjectTheme }) {
-  const { heroImage, heroImageAlt, title, type, date } = project;
+  const { heroImage, heroImageAlt, title } = project;
   return (
     <section className={`${styles.heroPanels} ${styles.reveal} ${styles.visible} ${styles.aboveDecor}`}>
-      {/* Ruler across top */}
       <div className={styles.heroPanelsRuler}>
-        <PanelsRuler label={project.title.split(':')[0]} />
+        <PanelsRuler label={title.split(':')[0]} />
       </div>
-
-      {/* Left — orange + title */}
       <div className={styles.heroPanelLeft}>
         <div className={styles.heroPanelToggle}>
           <div className={styles.heroPanelToggleDot} />
         </div>
         <h1 className={styles.heroPanelTitle}>{title.split(':')[1]?.trim() || title}</h1>
       </div>
-
-      {/* Centre — photo */}
       <div className={styles.heroPanelPhoto}>
-        <img src={heroImage} alt={heroImageAlt} className={styles.heroPanelImg} />
+        <Image
+          src={heroImage}
+          alt={heroImageAlt}
+          fill
+          sizes="(max-width: 900px) 100vw, 50vw"
+          className={styles.heroPanelImg}
+          priority
+        />
       </div>
-
-      {/* Right — cream + badge */}
       <div className={styles.heroPanelRight}>
         <div className={styles.heroPanelGlow} />
         <div className={styles.heroPanelBadge}>
-          <span className={styles.heroPanelBadgeText}>
-            {project.title.split(':')[0]}
-          </span>
+          <span className={styles.heroPanelBadgeText}>{title.split(':')[0]}</span>
         </div>
       </div>
     </section>
@@ -249,19 +247,15 @@ export default function ProjectTemplate({ project, theme }: Props) {
   const numberedSections = sections.filter(s => s.numbered);
   const standardSections = sections.filter(s => !s.numbered);
 
-  // ── Panels layout (project-zeta) — completely custom page structure ──────
+  // ── Panels layout ────────────────────────────────────────────────────────
   if (isPanels) {
     return (
       <div id="project-root" className={`${styles.root} ${animClass}`}>
         <Decoration style={theme.decor} />
 
-        {/* Hero — 3-panel split */}
         <PanelsHero project={project} theme={theme} />
-
-        {/* Ruler */}
         <PanelsRuler label={title.split(':')[0]} />
 
-        {/* Overview — 2-col text + stats */}
         <section className={`${styles.panelsOverview} ${styles.reveal} ${above}`}>
           <div className={styles.panelsOverviewLeft}>
             <div className={styles.panelsToggle}>
@@ -288,12 +282,17 @@ export default function ProjectTemplate({ project, theme }: Props) {
           </div>
         </section>
 
-        {/* Full-bleed photo section with floating meta + watermark */}
         {featureImage && (
           <>
             <PanelsRuler label={title.split(':')[0]} />
             <section className={`${styles.panelsPhotoSection} ${styles.reveal} ${above}`}>
-              <img src={featureImage} alt={featureImageAlt ?? ''} className={styles.panelsPhotoSectionImg} />
+              <Image
+                src={featureImage}
+                alt={featureImageAlt ?? ''}
+                fill
+                sizes="100vw"
+                className={styles.panelsPhotoSectionImg}
+              />
               <div className={styles.panelsPhotoOverlay} />
               {stats && (
                 <div className={styles.panelsPhotoMeta}>
@@ -312,10 +311,8 @@ export default function ProjectTemplate({ project, theme }: Props) {
           </>
         )}
 
-        {/* Ruler */}
         <PanelsRuler label={title.split(':')[0]} />
 
-        {/* Content sections — alternating photo | text panels */}
         {standardSections.map((s, i) => (
           <section
             key={i}
@@ -328,27 +325,36 @@ export default function ProjectTemplate({ project, theme }: Props) {
             </div>
             {s.image && (
               <div className={styles.panelsSectionImgWrap}>
-                <img src={s.image} alt={s.imageAlt ?? ''} className={styles.panelsSectionImg} />
+                <Image
+                  src={s.image}
+                  alt={s.imageAlt ?? ''}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                  className={styles.panelsSectionImg}
+                />
               </div>
             )}
           </section>
         ))}
 
-        {/* Ruler */}
         <PanelsRuler label={title.split(':')[0]} />
 
-        {/* Gallery */}
         {gallery && gallery.length > 0 && (
           <section className={`${styles.panelsGallery} ${styles.reveal} ${above}`}>
             {gallery.map((g, i) => (
               <div key={i} className={styles.panelsGalleryItem}>
-                <img src={g.src} alt={g.alt} className={styles.panelsGalleryImg} />
+                <Image
+                  src={g.src}
+                  alt={g.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className={styles.panelsGalleryImg}
+                />
               </div>
             ))}
           </section>
         )}
 
-        {/* Closing — split orange | cream */}
         <section className={`${styles.panelsClosing} ${styles.reveal} ${above}`}>
           <div className={styles.panelsClosingLeft}>
             <div>
@@ -358,9 +364,7 @@ export default function ProjectTemplate({ project, theme }: Props) {
             <Link href="/projects" className={styles.panelsBack}>← Back to projects</Link>
           </div>
           <div className={styles.panelsClosingRight}>
-            <p className={styles.panelsClosingBodyDark}>
-              {overviewBody}
-            </p>
+            <p className={styles.panelsClosingBodyDark}>{overviewBody}</p>
             {tags && (
               <div className={styles.panelsTags}>
                 {tags.map(t => <span key={t} className={styles.panelsTag}>{t}</span>)}
@@ -386,7 +390,14 @@ export default function ProjectTemplate({ project, theme }: Props) {
       ) : theme.heroStyle === 'split' ? (
         <section className={`${styles.hero} ${styles.heroSplit} ${styles.reveal} ${styles.visible} ${above}`}>
           <div className={styles.heroSplitWrap}>
-            <img src={heroImage} alt={heroImageAlt} className={styles.heroImage} />
+            <Image
+              src={heroImage}
+              alt={heroImageAlt}
+              fill
+              sizes="60vw"
+              className={styles.heroImage}
+              priority
+            />
             <div className={styles.heroOverlay} style={{ background: theme.heroOverlay }} />
           </div>
           <HeroObject slug={project.slug} color={theme.accent} muted={theme.muted} />
@@ -398,7 +409,14 @@ export default function ProjectTemplate({ project, theme }: Props) {
       ) : (
         <section className={`${styles.hero} ${styles.reveal} ${styles.visible} ${above}`}>
           <div className={styles.heroImageWrap}>
-            <img src={heroImage} alt={heroImageAlt} className={styles.heroImage} />
+            <Image
+              src={heroImage}
+              alt={heroImageAlt}
+              fill
+              sizes="100vw"
+              className={styles.heroImage}
+              priority
+            />
             <div className={styles.heroOverlay} style={{ background: theme.heroOverlay }} />
           </div>
           <HeroObject slug={project.slug} color={theme.accent} muted={theme.muted} />
@@ -453,7 +471,15 @@ export default function ProjectTemplate({ project, theme }: Props) {
       {featureImage && (
         <section className={`${styles.feature} ${styles.reveal} ${above}`}>
           <figure className={styles.featureFigure}>
-            <img src={featureImage} alt={featureImageAlt} className={`${styles.featureImg} ${isCutout ? styles.cutoutFeatureImg : ''}`} />
+            <div className={`${styles.featureImgWrap} ${isCutout ? styles.cutoutFeatureImg : ''}`}>
+              <Image
+                src={featureImage}
+                alt={featureImageAlt ?? ''}
+                fill
+                sizes="(max-width: 900px) 100vw, 1280px"
+                className={styles.featureImg}
+              />
+            </div>
             {featureCaption && <figcaption className={styles.featureCaption}>{featureCaption}</figcaption>}
           </figure>
         </section>
@@ -478,7 +504,13 @@ export default function ProjectTemplate({ project, theme }: Props) {
           </div>
           {s.image && (
             <div className={`${isCutout ? styles.cutoutImageWrap : styles.sectionImageWrap} ${styles.stagger2}`}>
-              <img src={s.image} alt={s.imageAlt ?? ''} className={isCutout ? styles.cutoutImage : styles.sectionImage} />
+              <Image
+                src={s.image}
+                alt={s.imageAlt ?? ''}
+                fill
+                sizes="(max-width: 900px) 100vw, 50vw"
+                className={isCutout ? styles.cutoutImage : styles.sectionImage}
+              />
             </div>
           )}
         </section>
@@ -489,7 +521,13 @@ export default function ProjectTemplate({ project, theme }: Props) {
         <section className={`${styles.gallery} ${styles.reveal} ${above}`}>
           {gallery.map((g, i) => (
             <div key={i} className={`${isCutout ? styles.cutoutGalleryItem : styles.galleryItem} ${i === 0 ? styles.stagger1 : i === 1 ? styles.stagger2 : styles.stagger3}`}>
-              <img src={g.src} alt={g.alt} className={isCutout ? styles.cutoutGalleryImg : styles.galleryImg} />
+              <Image
+                src={g.src}
+                alt={g.alt}
+                fill
+                sizes="(max-width: 900px) 100vw, 33vw"
+                className={isCutout ? styles.cutoutGalleryImg : styles.galleryImg}
+              />
             </div>
           ))}
         </section>
