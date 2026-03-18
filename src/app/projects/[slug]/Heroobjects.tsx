@@ -3,7 +3,7 @@
 // Add a new entry to HERO_OBJECTS keyed by slug.
 // The component receives `color` (the project's accent) and `muted` (secondary tone).
 
-import styles from './HeroObjects.module.css';
+import styles from './Heroobjects.module.css';
 
 interface ObjectProps {
   color: string;   // accent colour from theme
