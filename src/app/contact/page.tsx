@@ -1,7 +1,7 @@
 'use client';
 
 import SocialFanDeck from '../components/SocialFanDeck';
-import styles from './contact.module.css';
+import styles from '../../styles/contact.module.css';
 
 export default function ContactPage() {
   return (
@@ -12,8 +12,8 @@ export default function ContactPage() {
         <p className={styles.sub}>
           Open to new projects, collaborations, and conversations.
         </p>
-        <a className={styles.emailLink} href="mailto:dericjojo8@gmail.com">
-          dericjojo8@gamil.com
+        <a className={styles.emailLink} href="mailto:deric@example.com">
+          deric@example.com
         </a>
       </header>
 
