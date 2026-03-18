@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { getProject } from './projectData';
 import { getTheme }   from './themes';
 import ProjectTemplate from './ProjectTemplate';
-import { getProject } from './projectData';
 
 type Props = { params: Promise<{ slug: string }> };
 
