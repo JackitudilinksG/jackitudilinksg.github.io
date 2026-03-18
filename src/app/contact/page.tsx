@@ -1,7 +1,7 @@
 'use client';
 
 import SocialFanDeck from '../components/SocialFanDeck';
-import styles from '../../styles/contact.module.css';
+import styles from './contact.module.css';
 
 export default function ContactPage() {
   return (
