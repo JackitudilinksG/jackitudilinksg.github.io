@@ -27,7 +27,6 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    alert('This page is under construction 🚧🏗️👷‍♂️');
 
     const handleScroll = () => {
       const scrollY = window.scrollY;

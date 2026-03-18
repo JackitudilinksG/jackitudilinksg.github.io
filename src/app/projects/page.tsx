@@ -1,57 +1,75 @@
-import ProjectCarousel from '../components/ProjectCarousel';
-import styles from './projects.module.css'
+import ProjectCard from '../components/ProjectCard';
+import styles from './projects.module.css';
 
 const PROJECTS = [
   {
-    slug: "project-alpha",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-    type: "Web Design",
-    date: "Mar 10, 2025",
-    title: "Project Alpha: Redesigning the onboarding experience",
+    slug: 'project-alpha',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    type: 'Web Design',
+    date: 'Mar 10, 2025',
+    title: 'Project Alpha: Redesigning the onboarding experience',
     description:
-      "A full redesign of the user onboarding flow, reducing drop-off by 40% through clearer copy and progressive disclosure.",
+      'A full redesign of the user onboarding flow, reducing drop-off by 40% through clearer copy and progressive disclosure.',
   },
   {
-    slug: "project-beta",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
-    type: "Mobile App",
-    date: "Jan 22, 2025",
-    title: "Project Beta: Real-time data dashboard",
+    slug: 'project-beta',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
+    type: 'Mobile App',
+    date: 'Jan 22, 2025',
+    title: 'Project Beta: Real-time data dashboard',
     description:
-      "A cross-platform mobile app for monitoring IoT sensor data with live charts, alerts, and offline caching.",
+      'A cross-platform mobile app for monitoring IoT sensor data with live charts, alerts, and offline caching.',
   },
   {
-    slug: "project-gamma",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-    type: "Branding",
-    date: "Nov 05, 2024",
-    title: "Project Gamma: Visual identity system",
+    slug: 'project-gamma',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    type: 'Branding',
+    date: 'Nov 05, 2024',
+    title: 'Project Gamma: Visual identity system',
     description:
-      "Built a comprehensive brand identity from scratch — logo, type scale, color system, and component library.",
+      'Built a comprehensive brand identity from scratch — logo, type scale, color system, and component library.',
   },
   {
-    slug: "project-delta",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
-    type: "AI / ML",
-    date: "Sep 14, 2024",
-    title: "Project Delta: Predictive analytics engine",
+    slug: 'project-delta',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
+    type: 'AI / ML',
+    date: 'Sep 14, 2024',
+    title: 'Project Delta: Predictive analytics engine',
     description:
-      "Trained and deployed a forecasting model that improved inventory planning accuracy by 28% quarter-over-quarter.",
+      'Trained and deployed a forecasting model that improved inventory planning accuracy by 28% quarter-over-quarter.',
   },
   {
-    slug: "project-epsilon",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
-    type: "Web App",
-    date: "Jul 30, 2024",
-    title: "Project Epsilon: Collaborative workspace tool",
+    slug: 'project-epsilon',
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80',
+    type: 'Web App',
+    date: 'Jul 30, 2024',
+    title: 'Project Epsilon: Collaborative workspace tool',
     description:
-      "A real-time collaborative platform with presence awareness, live commenting, and version history.",
+      'A real-time collaborative platform with presence awareness, live commenting, and version history.',
+  },
+  {
+    slug: 'project-race',
+    image: 'https://images.unsplash.com/photo-1541348263662-e068662d82af?w=800&q=80',
+    type: 'Motion & Experience',
+    date: 'Feb 12, 2025',
+    title: 'Project Race: A live race-day fan experience',
+    description:
+      'Lap data, driver telemetry, and crowd energy — unified in real time for 240k concurrent fans.',
+  },
+  {
+    slug: 'project-zeta',
+    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80',
+    type: 'Sound & Brand Design',
+    date: 'Apr 02, 2025',
+    title: 'Project Zeta: Where sound becomes story',
+    description:
+      'A full-stack audio branding platform connecting creators with internationally licensed music.',
   },
 ];
 
 export const metadata = {
-  title: "Projects",
-  description: "A collection of work across design, engineering, and strategy.",
+  title: 'Projects',
+  description: 'A collection of work across design, engineering, and strategy.',
 };
 
 export default function ProjectsPage() {
@@ -63,8 +81,12 @@ export default function ProjectsPage() {
           A collection of work across design, engineering, and strategy.
         </p>
       </header>
- 
-      <ProjectCarousel projects={PROJECTS} />
+
+      <div className={styles.grid}>
+        {PROJECTS.map(project => (
+          <ProjectCard key={project.slug} project={project} />
+        ))}
+      </div>
     </main>
   );
 }

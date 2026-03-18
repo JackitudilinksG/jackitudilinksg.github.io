@@ -1,14 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import styles from '../../styles/projects.module.css'
+import SocialFanDeck from '../components/SocialFanDeck';
+import styles from './contact.module.css';
 
-export default function Projects() {
+export default function ContactPage() {
+  return (
+    <main className={styles.page}>
+      <header className={styles.header}>
+        <p className={styles.label}>Get in touch</p>
+        <h1 className={styles.heading}>Contact</h1>
+        <p className={styles.sub}>
+          Open to new projects, collaborations, and conversations.
+        </p>
+        <a className={styles.emailLink} href="mailto:dericjojo8@gmail.com">
+          dericjojo8@gamil.com
+        </a>
+      </header>
 
-    return(
-        <section>
-            <h1>Contact</h1>
-            <h3>Page under construction</h3>
-        </section>
-    )
+      <SocialFanDeck />
+    </main>
+  );
 }

@@ -5,6 +5,10 @@ import styles from '../../styles/projects.module.css'
 
 export default function Projects() {
 
+    useEffect(() => {
+        alert('This page is under construction 🚧🏗️👷‍♂️');
+    })
+
     return(
         <section>
             <h1>About</h1>

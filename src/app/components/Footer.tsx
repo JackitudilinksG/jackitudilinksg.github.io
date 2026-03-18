@@ -14,7 +14,7 @@ export default function Footer() {
                 </div>
                 <div className={styles.column}>
                     <p className={styles.columnLabel}>Socials</p>
-                    <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.instagram.com/dericjojo10/" target="_blank" rel="noopener noreferrer">Instagram</a>
                     <a href="https://github.com/JackitudilinksG" target="_blank" rel="noopener noreferrer">GitHub</a>
                     <a href="https://www.linkedin.com/in/deric-jojo-0594a7271/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
