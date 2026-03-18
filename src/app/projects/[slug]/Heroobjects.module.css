@@ -1,0 +1,53 @@
+/* ── Wrapper — centres the object in the hero ──────────────────────────────── */
+.wrapper {
+  position:        absolute;
+  top:             50%;
+  left:            50%;
+  transform:       translate(-50%, -50%);
+  z-index:         3;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  pointer-events:  none;
+  animation:       float 4s ease-in-out infinite;
+}
+
+/* ── The SVG itself ─────────────────────────────────────────────────────────── */
+.obj {
+  width:      180px;
+  height:     180px;
+  filter:     drop-shadow(0 24px 40px rgba(0,0,0,0.35));
+}
+
+/* ── Ambient glow beneath the object ───────────────────────────────────────── */
+.glow {
+  position:      absolute;
+  width:         120px;
+  height:        40px;
+  bottom:        -20px;
+  left:          50%;
+  transform:     translateX(-50%);
+  border-radius: 50%;
+  opacity:       0.35;
+  filter:        blur(18px);
+  animation:     glowPulse 4s ease-in-out infinite;
+}
+
+/* ── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes float {
+  0%,  100% { transform: translate(-50%, -50%) translateY(0px);    }
+  50%        { transform: translate(-50%, -50%) translateY(-18px);  }
+}
+
+@keyframes glowPulse {
+  0%,  100% { opacity: 0.35; transform: translateX(-50%) scaleX(1);    }
+  50%        { opacity: 0.55; transform: translateX(-50%) scaleX(0.75); }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .obj {
+    width:  120px;
+    height: 120px;
+  }
+}

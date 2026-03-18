@@ -1,0 +1,116 @@
+/* ── Section ──────────────────────────────────────────────────────────────── */
+.section {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  padding:         4rem 2rem 5rem;
+  overflow:        hidden;
+}
+
+/* ── Deck ─────────────────────────────────────────────────────────────────── */
+.deckWrap {
+  position:        relative;
+  width:           100%;
+  height:          320px;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+}
+
+.card {
+  position:      absolute;
+  width:         160px;
+  height:        210px;
+  border-radius: 14px;
+  overflow:      hidden;
+  cursor:        default;
+  /* transform & transition managed entirely by JS */
+  will-change:   transform;
+}
+
+.card img {
+  width:          100%;
+  height:         100%;
+  object-fit:     cover;
+  display:        block;
+  pointer-events: none;
+  user-select:    none;
+}
+
+/* ── Heading ──────────────────────────────────────────────────────────────── */
+.headingBlock {
+  margin-top:  2.5rem;
+  text-align:  center;
+  line-height: 1.1;
+}
+
+.headingRegular {
+  display:     block;
+  font-family: "DM Sans", "Helvetica Neue", sans-serif;
+  font-size:   clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  color:       var(--foreground);
+  margin-bottom: 4px;
+}
+
+.headingSerif {
+  display:        block;
+  font-family:    "Playfair Display", Georgia, serif;
+  font-size:      clamp(2rem, 5vw, 3rem);
+  font-weight:    700;
+  font-style:     italic;
+  color:          var(--foreground);
+  letter-spacing: -0.02em;
+}
+
+/* ── Intro text ───────────────────────────────────────────────────────────── */
+.introText {
+  margin-top:  1rem;
+  font-family: "DM Sans", "Helvetica Neue", sans-serif;
+  font-size:   0.9rem;
+  color:       color-mix(in srgb, var(--foreground) 50%, transparent);
+  letter-spacing: 0.02em;
+}
+
+/* ── Social links ─────────────────────────────────────────────────────────── */
+.links {
+  display:         flex;
+  gap:             2.5rem;
+  margin-top:      1.5rem;
+  flex-wrap:       wrap;
+  justify-content: center;
+}
+
+.link {
+  font-family:    "DM Sans", "Helvetica Neue", sans-serif;
+  font-size:      1rem;
+  font-weight:    500;
+  color:          var(--foreground);
+  text-decoration: none;
+  position:       relative;
+  padding-bottom: 3px;
+  transition:     color 0.2s ease;
+}
+
+.link::after {
+  content:    '';
+  position:   absolute;
+  bottom:     0;
+  left:       0;
+  width:      0;
+  height:     1.5px;
+  background: var(--foreground);
+  transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link:hover::after { width: 100%; }
+
+/* ── Responsive — collapse deck on small screens ─────────────────────────── */
+@media (max-width: 640px) {
+  .deckWrap {
+    height:    260px;
+    transform: scale(0.72);
+    transform-origin: center center;
+  }
+  .links { gap: 1.5rem; }
+}
