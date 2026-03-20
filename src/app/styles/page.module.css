@@ -98,3 +98,12 @@
     margin: 80dvh auto 2rem;
   }
 }
+
+#liner {
+  font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:      clamp(0.85rem, 1.8vw, 1.25rem);
+  font-weight:    400;
+  letter-spacing: 0.12em;
+  color:          var(--foreground);
+  opacity:        0.6;
+}

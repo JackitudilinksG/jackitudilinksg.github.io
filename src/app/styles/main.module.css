@@ -1,63 +1,227 @@
+/* ── Existing styles ─────────────────────────────────────────────────────── */
+
 .topText {
-    height:         auto;
-    min-height:     15dvh;
-    display:        flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:    start;
-    row-gap:        10px;
-    padding:        1rem;
+  height:          auto;
+  min-height:      15dvh;
+  display:         flex;
+  flex-direction:  column;
+  justify-content: center;
+  align-items:     start;
+  row-gap:         10px;
+  padding:         1rem;
 }
 
 .CTA {
-    padding:         20px;
-    display:         flex;
-    flex-direction:  row;
-    justify-content: space-between;
-    align-items:     start;
-    column-gap:      10px;
-    color:           #EAEAE1;
-    background-color: #1F1D1B;
-    flex-wrap:       wrap; /* allows wrapping on small screens */
+  padding:          20px;
+  display:          flex;
+  flex-direction:   row;
+  justify-content:  space-between;
+  align-items:      start;
+  column-gap:       10px;
+  color:            #EAEAE1;
+  background-color: #1F1D1B;
+  flex-wrap:        wrap;
 }
 
-.date { font-size: 14px; }
+.date           { font-size: 14px; }
 
 .ctaContent {
-    display:        flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:    start;
-    row-gap:        10px;
-    min-width:      200px;
-    flex:           1;
+  display:        flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:    start;
+  row-gap:        10px;
+  min-width:      200px;
+  flex:           1;
 }
 
 .secondContent {
-    display:        flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items:    flex-start;
+  display:        flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:    flex-start;
 }
 
 .ctaButton {
-    color:            rgb(26, 26, 26);
-    background-color: rgb(214, 107, 0);
-    padding:          10px;
-    font-size:        10px;
-    cursor:           pointer;
+  color:            rgb(26, 26, 26);
+  background-color: rgb(214, 107, 0);
+  padding:          10px;
+  font-size:        10px;
+  cursor:           pointer;
 }
 
-.ctaImage {
-    flex-shrink: 0;
-}
+.ctaImage { flex-shrink: 0; }
 
-/* ── Mobile ── */
 @media (max-width: 640px) {
-    .CTA {
-        flex-direction: column;
-    }
-    .ctaImage {
-        display: none; /* hide the image on very small screens */
-    }
+  .CTA            { flex-direction: column; }
+  .ctaImage       { display: none; }
+}
+
+
+/* ── Shared label ─────────────────────────────────────────────────────────── */
+.aboutLabel {
+  font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:      0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color:          color-mix(in srgb, var(--foreground) 45%, transparent);
+  margin:         0 0 0.75rem;
+}
+
+
+/* ── About blurb ──────────────────────────────────────────────────────────── */
+.about {
+  padding:    3rem 2rem 2.5rem;
+  max-width:  680px;
+  margin:     0 auto;
+  text-align: center;
+}
+
+.aboutHeading {
+  font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:      clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight:    500;
+  letter-spacing: -0.02em;
+  color:          var(--foreground);
+  margin:         0 0 1.25rem;
+}
+
+.aboutBody {
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:   1rem;
+  line-height: 1.75;
+  color:       color-mix(in srgb, var(--foreground) 65%, transparent);
+  margin:      0 0 1rem;
+}
+
+
+/* ── Rotating arc carousel ────────────────────────────────────────────────── */
+
+.arcSection { padding: 2rem 2rem 0; }
+
+/*
+ * Clip box — height = orbit radius so the orbit centre sits exactly at the
+ * bottom edge. Cards below that line are clipped; no dead space underneath.
+ */
+.arcClip {
+  position: relative;
+  width:    100%;
+  height:   clamp(200px, 32vw, 420px);
+  overflow: hidden;
+}
+
+/* Cards are positioned absolutely; JS sets left/top to orbit coordinates */
+.arcCard {
+  position:        absolute;
+  transform:       translate(-50%, -50%); /* centre card on the computed point */
+  width:           clamp(120px, 18vw, 180px);
+  height:          clamp(120px, 18vw, 180px);
+  border-radius:   16px;
+  background:      var(--background);
+  border:          1px solid color-mix(in srgb, var(--foreground) 14%, transparent);
+  box-shadow:      0 4px 24px rgba(0,0,0,0.08);
+  display:         flex;
+  flex-direction:  column;
+  justify-content: flex-end;
+  padding:         14px;
+  text-decoration: none;
+  transition:      border-color 0.2s, box-shadow 0.2s;
+}
+.arcCard:hover {
+  border-color: color-mix(in srgb, var(--foreground) 35%, transparent);
+  box-shadow:   0 8px 32px rgba(0,0,0,0.14);
+}
+
+.arcCardLabel {
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:   clamp(0.72rem, 1.4vw, 0.92rem);
+  font-weight: 500;
+  color:       var(--foreground);
+  line-height: 1.25;
+}
+
+.arcCardSub {
+  font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:      clamp(0.55rem, 1vw, 0.68rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color:          color-mix(in srgb, var(--foreground) 40%, transparent);
+  margin-top:     4px;
+}
+
+
+/* ── WIP accordion ────────────────────────────────────────────────────────── */
+.wipSection {
+  padding: 3rem 2rem 2.5rem;
+}
+
+.accordionList {
+  display:        flex;
+  flex-direction: column;
+  border-top:     1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+.accordionItem {
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+.accordionTrigger {
+  width:           100%;
+  display:         flex;
+  align-items:     center;
+  gap:             1rem;
+  padding:         1.1rem 0;
+  background:      none;
+  border:          none;
+  cursor:          pointer;
+  text-align:      left;
+  color:           var(--foreground);
+}
+.accordionTrigger:hover .accordionTitle {
+  opacity: 0.7;
+}
+
+.accordionTitle {
+  font-family:  'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:    clamp(1rem, 2vw, 1.2rem);
+  font-weight:  500;
+  color:        var(--foreground);
+  flex:         1;
+  transition:   opacity 0.2s;
+}
+
+.accordionTag {
+  font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:      0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          color-mix(in srgb, var(--foreground) 45%, transparent);
+  border:         1px solid color-mix(in srgb, var(--foreground) 20%, transparent);
+  border-radius:  100px;
+  padding:        3px 10px;
+  white-space:    nowrap;
+}
+
+.accordionChevron {
+  font-size:   1.2rem;
+  font-weight: 300;
+  color:       color-mix(in srgb, var(--foreground) 45%, transparent);
+  flex-shrink: 0;
+  width:       20px;
+  text-align:  center;
+  transition:  transform 0.2s;
+}
+
+.accordionBody {
+  overflow:   hidden;
+  transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.accordionText {
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:   0.95rem;
+  line-height: 1.75;
+  color:       color-mix(in srgb, var(--foreground) 65%, transparent);
+  padding:     0 0 1.25rem;
+  margin:      0;
 }

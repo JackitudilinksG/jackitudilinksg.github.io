@@ -1,3 +1,4 @@
+import GitHubContributions from '../components/GitHubContributions';
 import ProjectCard from '../components/ProjectCard';
 import styles from './projects.module.css';
 
@@ -87,6 +88,7 @@ export default function ProjectsPage() {
           <ProjectCard key={project.slug} project={project} />
         ))}
       </div>
+      <GitHubContributions />
     </main>
   );
 }

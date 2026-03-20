@@ -41,10 +41,6 @@ export default function GitHubContributions() {
 
     return (
         <div className={styles.container}>
-            <h2>GitHub Contribution Stream</h2>
-            <div className={styles.stats}>
-                <p>Total Contributions (Last Year): <span>{calendar ? calendar.totalContributions : '...'}</span></p>
-            </div>
             <div className={styles.graphScroll}>
                 <div className={styles.graph}>
                     {calendar && calendar.weeks.map((week, wi) =>

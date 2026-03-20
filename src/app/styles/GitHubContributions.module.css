@@ -1,6 +1,7 @@
 .container {
     background-color: var(--background);
     color:            var(--foreground);
+    margin-top: 1.5rem;
     padding:          1.5rem;
     border-radius:    12px;
 }
