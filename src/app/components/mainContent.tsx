@@ -44,29 +44,25 @@ function ArcCarousel() {
     const clip = clipRef.current;
     if (!clip) return;
 
-    const SPEED = 0.0008;
+    const SPEED = 0.0008; // radians per frame (~14s per revolution at 60fps)
 
     const tick = () => {
-      const W = clip.offsetWidth;
-      const H = clip.offsetHeight;
-
-      // Don't start drawing until the element has layout
-      if (W === 0 || H === 0) {
-        rafRef.current = requestAnimationFrame(tick);
-        return;
-      }
-
       angleRef.current += SPEED;
 
+      const W  = clip.offsetWidth;
+      const H  = clip.offsetHeight;          // = radius
       const cx = W / 2;
-      const cy = H;
-      const R  = H * 0.88;
+      const cy = H;                           // orbit centre sits at bottom edge of clip
+      const R  = H * 0.80;                   // orbit radius — slightly less than H
 
       cardRefs.current.forEach((card, i) => {
         if (!card) return;
+        // Clockwise on screen: x = cx + R·cos(a), y = cy - R·sin(a)
+        // Spread 4 cards 90° apart (π/2 radians)
         const a = angleRef.current + (i * Math.PI) / 2;
         const x = cx + R * Math.cos(a);
         const y = cy - R * Math.sin(a);
+        // Centre the card on the computed point
         card.style.left = x + 'px';
         card.style.top  = y + 'px';
       });
@@ -131,12 +127,15 @@ export default function MainContent() {
   return (
     <section>
 
-      {/* ── About blurb ──────────────────────────────────────────────────── */}
-      <div className={styles.about}>
+      {/* ── CTA block ────────────────────────────────────────────────────── */}
+      <div className={styles.CTA}>
+        <div className={styles.ctaContent}>
+          <p className={styles.date}>{date}</p>
+          <div className={styles.about}>
         <p className={styles.aboutLabel}>About</p>
         <h2 className={styles.aboutHeading}>Hi, I'm Deric.</h2>
         <p className={styles.aboutBody}>
-          I'm a full-stack developer and designer based in Udupi, India — focused on building
+          I'm a full-stack developer and designer focused on building
           things that are fast, considered, and a little bit unexpected. I work across the full
           stack but lean toward the interface layer, where code and craft meet.
         </p>
@@ -145,31 +144,19 @@ export default function MainContent() {
           open-source, or listening to music louder than I should.
         </p>
       </div>
-
-      {/* ── Rotating arc carousel ─────────────────────────────────────────── */}
-      <div className={styles.arcSection}>
-        <p className={styles.aboutLabel}>Highlights</p>
-        <ArcCarousel />
-      </div>
-
-      {/* ── CTA block ────────────────────────────────────────────────────── */}
-      <div className={styles.CTA}>
-        <div className={styles.ctaContent}>
-          <p className={styles.date}>{date}</p>
-          <div className={styles.secondContent}>
-            <h1>Second Content Area</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipiscing elit.
-              Sit amet consectetur adipiscing elit quisque faucibus ex.
-            </p>
-          </div>
-          <div className={styles.ctaButton}>
+          <div className={styles.ctaButton} onClick={() => window.location.href = '/about'}>
             <h2>Read More →</h2>
           </div>
         </div>
         <div className={styles.ctaImage}>
           <Image src="/assets/ctaImage.png" alt="Under Construction" width={562} height={398} />
         </div>
+      </div>
+
+      {/* ── Rotating arc carousel ─────────────────────────────────────────── */}
+      <div className={styles.arcSection}>
+        <p className={styles.aboutLabel}>Highlights</p>
+        <ArcCarousel />
       </div>
 
       {/* ── WIP accordion ────────────────────────────────────────────────── */}
