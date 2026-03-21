@@ -1,10 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-// Re-import the same store from send-otp
-// Note: in-memory Map is shared within the same server process
 import { otpStore } from '../send-otp/route';
 
 export async function POST(req: NextRequest) {
@@ -29,14 +24,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Incorrect code' }, { status: 400 });
     }
 
-    // OTP valid — send the actual message to Deric
+    // OTP valid — instantiate Resend here so env var is available at runtime
+    const resend = new Resend(process.env.RESEND_API_KEY);
     otpStore.delete(email);
 
     await resend.emails.send({
-      from:     'Portfolio Contact <onboarding@resend.dev>',
-      to:       'dericjojo8@gmail.com',
-      replyTo:  email,
-      subject:  `[Portfolio] ${subject}`,
+      from:    'Portfolio Contact <onboarding@resend.dev>',
+      to:      'dericjojo8@gmail.com',
+      replyTo: email,
+      subject: `[Portfolio] ${subject}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:32px;">
           <p style="font-size:12px;color:#888;margin:0 0 4px;">From</p>
