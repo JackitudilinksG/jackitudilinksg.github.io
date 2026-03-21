@@ -53,41 +53,45 @@ export interface ProjectContent {
 
 export const PROJECTS: ProjectContent[] = [
   {
-    slug: 'project-alpha',
+    slug: 'Atlas',
     heroImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=80',
     heroImageAlt: 'Mountain landscape at dawn',
-    type: 'Web Design',
-    date: 'Mar 10, 2025',
-    title: 'Project Alpha: Redesigning the onboarding experience',
-    tagline: 'Cutting time-to-activate from 8 minutes to under 3.',
+    type: 'Mobile Application Development',
+    date: 'Dec 2025',
+    title: 'Project Atlas - HearWell',
+    tagline: 'HearWell, Live Well',
     overviewBody:
-      'A full redesign of the user onboarding flow. Through session recordings and interviews we mapped every friction point, then rebuilt the experience around progressive disclosure.',
+      'ATLAS by HearWell is an adaptive audio enhancement platform that transforms regular earbuds into affordable hearing aids, making hearing support accessible for those suffering from hearing loss.',
     stats: [
-      { label: 'Drop-off reduction', value: '−40%' },
-      { label: 'Time to activate',   value: '2m 48s' },
-      { label: 'Shipped',            value: 'Q1 2025' },
+      { label: 'Drop-off reduction', value: '−90%' },
+      { label: 'Time to activate',   value: '5m 22s' },
+      { label: 'Shipped',            value: 'Q4 2025' },
     ],
+    // replace with flowchart
     featureImage: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1400&q=80',
     featureImageAlt: 'Code on screen',
     featureCaption: 'The new flow reduced average steps from 11 to 5.',
     sections: [
       {
-        heading: 'The problem with choice overload',
-        body: 'Users were presented with every feature on day one. Decision fatigue set in before they had seen a single result. We stripped the first session down to one core action.',
-        image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+        heading: 'Empowering Inclusion',
+        body: 'ATLAS drives social change, making hearing health accessible and affordable. By removing financial barriers and destigmatizing the use of hearing aids, it fosters greater economic participation and enhances the overall quality of life for the hearing-impaired community.',
+        image: '/assets/manthan/DSC00469.JPG',
         imageAlt: 'Team whiteboarding',
         imagePosition: 'right',
       },
       {
-        heading: 'Writing with intent',
-        body: 'Every label, tooltip and error message was rewritten to be action-oriented. Copy audits ran alongside the UX work, not after.',
-        image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80',
+        heading: 'Hearing Redefined',
+        body: 'This AI-powered app transforms everyday earbuds into functional hearing devices through real-time audio enhancement. It helps users navigate daily life with features like natural language translation, providing a discreet, mobile-ready solution for mild hearing loss.',
+        image: '/assets/manthan/team_prize_3.JPG',
         imageAlt: 'Notebook with pen',
         imagePosition: 'left',
       },
       {
-        heading: 'Measuring what matters',
-        body: 'We instrumented each step before launch so we could compare funnels directly. The 40% improvement in 7-day retention was visible within the first week.',
+        heading: 'The Future of Auditory Health',
+        body: 'Targeting a 1,700 Cr total available market, ATLAS disrupts traditional models with a software-first approach. By leveraging existing hardware and proprietary AI models, it offers a scalable, "freemium" path to professional-grade hearing assessments and adaptive behavior.',
+        image: '/assets/manthan/red_light.jpg',
+        imageAlt: 'Notebook with pen',
+        imagePosition: 'right',
       },
     ],
     gallery: [

@@ -4,7 +4,7 @@ import styles from './projects.module.css';
 
 const PROJECTS = [
   {
-    slug: 'project-alpha',
+    slug: 'Atlas',
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
     type: 'Web Design',
     date: 'Mar 10, 2025',

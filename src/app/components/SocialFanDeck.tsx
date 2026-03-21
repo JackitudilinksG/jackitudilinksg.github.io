@@ -10,114 +10,140 @@ interface SocialLink {
 }
 
 const SOCIAL_LINKS: SocialLink[] = [
-  { label: 'Instagram', href: 'https://instagram.com/yourusername'                    },
-  { label: 'GitHub',    href: 'https://github.com/JackitudilinksG'                    },
-  { label: 'LinkedIn',  href: 'https://www.linkedin.com/in/deric-jojo-0594a7271/'     },
-  { label: 'Twitter',   href: 'https://twitter.com/yourusername'                      },
+  { label: 'Instagram', href: 'https://www.instagram.com/dericjojo10/'               },
+  { label: 'GitHub',    href: 'https://github.com/JackitudilinksG'                   },
+  { label: 'LinkedIn',  href: 'https://www.linkedin.com/in/deric-jojo-0594a7271/'    },
 ];
 
-// Placeholder images — warm editorial tones that complement most themes
 const CARD_IMAGES = [
   'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=480&q=80',
-  'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=480&q=80',
-  'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=480&q=80',
-  'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=480&q=80',
-  'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=480&q=80',
-  'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=480&q=80',
-  'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=480&q=80',
+  '/assets/hackfest.jpg',
+  '/assets/insta2.webp',
+  '/assets/manthan_speech.jpg',
+  '/assets/random_1.jpg',
+  '/assets/insta1.webp',
+  '/assets/insta3.jpg',
 ];
 
-// [translateX (rem), translateY (rem), rotate (deg), scale, zIndex]
-type CardState = [number, number, number, number, number];
+// ─── Dynamic state generation ─────────────────────────────────────────────────
 
-const FINAL_STATE: CardState[] = [
-  [-15,  7.3, -21, 0.7756, 1],
-  [-11,  4,   -14, 0.8498, 2],
-  [ -6,  1.3,  -7, 0.9346, 3],
-  [  0,  0,     0, 1,     10],
-  [  6,  1.3,   7, 0.9346, 3],
-  [ 11,  4,    14, 0.8498, 2],
-  [ 15,  7.3,  21, 0.7756, 1],
-];
+type CardState = [number, number, number, number, number]; // tx, ty, rot, scale, zIndex
 
-// Collapsed start — cards stacked tightly at centre
-const START_STATE: CardState[] = [
-  [-2.5, 3.5,  -4,  0.92, 1],
-  [-1.8, 2.4,  -2.5, 0.94, 2],
-  [-1,   1.2,  -1,  0.96, 3],
-  [ 0,   0,     0,  1,   10],
-  [ 1,   1.2,   1,  0.96, 3],
-  [ 1.8, 2.4,   2.5, 0.94, 2],
-  [ 2.5, 3.5,   4,  0.92, 1],
-];
+/**
+ * Generates FINAL_STATE for any number of cards.
+ * Cards fan symmetrically — the centre card is upright,
+ * outer cards rotate and drop progressively.
+ * Max spread adapts so all cards stay visible.
+ */
+function buildFinalState(n: number): CardState[] {
+  const MAX_SPREAD_REM = 11;   // half-width of the full fan in rem
+  const MAX_ROT_DEG    = 20;   // max rotation at outermost card
+  const MAX_DROP_REM   = 6;    // max vertical drop at outermost card
 
-// Fan-out order: center first, then alternate outward
-const FAN_ORDER = [3, 2, 4, 1, 5, 0, 6];
-const STAGGER_MS = 65;
-const FAN_DURATION_MS = 780;
-const FAN_EASE = 'cubic-bezier(0.34, 1.20, 0.64, 1)';
-const HOVER_EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
+  return Array.from({ length: n }, (_, i) => {
+    // Normalise position: -1 (leftmost) → 0 (centre) → +1 (rightmost)
+    const t      = n === 1 ? 0 : (i / (n - 1)) * 2 - 1;
+    const tx     = t * MAX_SPREAD_REM;
+    const ty     = (t * t) * MAX_DROP_REM;   // parabolic drop — centre lowest
+    const rot    = t * MAX_ROT_DEG;
+    const scale  = 1 - Math.abs(t) * 0.22;  // outer cards slightly smaller
+    const zIndex = i === Math.floor(n / 2) ? 10 : n - Math.abs(i - Math.floor(n / 2));
+    return [tx, ty, rot, scale, zIndex] as CardState;
+  });
+}
+
+/**
+ * Collapsed start — all cards near-centre, tiny spread.
+ */
+function buildStartState(n: number): CardState[] {
+  return Array.from({ length: n }, (_, i) => {
+    const t      = n === 1 ? 0 : (i / (n - 1)) * 2 - 1;
+    const tx     = t * 2;
+    const ty     = (t * t) * 3;
+    const rot    = t * 4;
+    const scale  = 1 - Math.abs(t) * 0.08;
+    const zIndex = i === Math.floor(n / 2) ? 10 : n - Math.abs(i - Math.floor(n / 2));
+    return [tx, ty, rot, scale, zIndex] as CardState;
+  });
+}
+
+/**
+ * Fan-out order: centre first, then alternate left/right outward.
+ */
+function buildFanOrder(n: number): number[] {
+  const centre = Math.floor(n / 2);
+  const order  = [centre];
+  for (let d = 1; d <= centre; d++) {
+    if (centre - d >= 0) order.push(centre - d);
+    if (centre + d < n)  order.push(centre + d);
+  }
+  return order;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+const STAGGER_MS    = 65;
+const FAN_DURATION  = 780;
+const FAN_EASE      = 'cubic-bezier(0.34, 1.20, 0.64, 1)';
+const HOVER_EASE    = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
 function toTransform([tx, ty, rot, sc]: CardState): string {
   return `translate(${tx}rem, ${ty}rem) rotate(${rot}deg) scale(${sc})`;
 }
 
 export default function SocialFanDeck() {
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const n           = CARD_IMAGES.length;
+  const finalState  = buildFinalState(n);
+  const startState  = buildStartState(n);
+  const fanOrder    = buildFanOrder(n);
+
+  const cardRefs   = useRef<(HTMLDivElement | null)[]>([]);
   const hoverBound = useRef(false);
 
-  function applyInstant(index: number, state: CardState) {
-    const el = cardRefs.current[index];
+  function applyInstant(i: number, state: CardState) {
+    const el = cardRefs.current[i];
     if (!el) return;
     el.style.transition = 'none';
     el.style.zIndex     = String(state[4]);
     el.style.transform  = toTransform(state);
   }
 
-  function applyAnimated(index: number, state: CardState, delay: number) {
-    const el = cardRefs.current[index];
+  function applyAnimated(i: number, state: CardState) {
+    const el = cardRefs.current[i];
     if (!el) return;
     el.style.zIndex     = String(state[4]);
-    el.style.transition = `transform ${FAN_DURATION_MS}ms ${FAN_EASE} ${delay}ms`;
+    el.style.transition = `transform ${FAN_DURATION}ms ${FAN_EASE}`;
     el.style.transform  = toTransform(state);
   }
 
-  function bindHover(index: number) {
-    const el = cardRefs.current[index];
+  function bindHover(i: number) {
+    const el = cardRefs.current[i];
     if (!el) return;
-
     el.addEventListener('mouseenter', () => {
-      const [tx, ty, rot, sc] = FINAL_STATE[index];
+      const [tx, ty, rot, sc] = finalState[i];
       el.style.transition = `transform 0.32s ${HOVER_EASE}`;
       el.style.zIndex     = '20';
       el.style.transform  =
         `translate(${tx}rem, calc(${ty}rem - 28px)) rotate(${rot}deg) scale(${sc * 1.10})`;
     });
-
     el.addEventListener('mouseleave', () => {
       el.style.transition = `transform 0.32s ${HOVER_EASE}`;
-      el.style.zIndex     = String(FINAL_STATE[index][4]);
-      el.style.transform  = toTransform(FINAL_STATE[index]);
+      el.style.zIndex     = String(finalState[i][4]);
+      el.style.transform  = toTransform(finalState[i]);
     });
   }
 
   function runIntro() {
     hoverBound.current = false;
+    cardRefs.current.forEach((_, i) => applyInstant(i, startState[i]));
 
-    // 1. Snap all cards to collapsed state
-    cardRefs.current.forEach((_, i) => applyInstant(i, START_STATE[i]));
-
-    // 2. Next paint → animate to final fan positions with stagger
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        FAN_ORDER.forEach((cardIndex, step) => {
-          setTimeout(() => {
-            applyAnimated(cardIndex, FINAL_STATE[cardIndex], 0);
-          }, step * STAGGER_MS);
+        fanOrder.forEach((cardIndex, step) => {
+          setTimeout(() => applyAnimated(cardIndex, finalState[cardIndex]), step * STAGGER_MS);
         });
 
-        // 3. Attach hover listeners after animation completes
-        const totalDelay = FAN_ORDER.length * STAGGER_MS + FAN_DURATION_MS;
+        const totalDelay = fanOrder.length * STAGGER_MS + FAN_DURATION;
         setTimeout(() => {
           if (!hoverBound.current) {
             cardRefs.current.forEach((_, i) => bindHover(i));
@@ -129,7 +155,6 @@ export default function SocialFanDeck() {
   }
 
   useEffect(() => {
-    // Small mount delay so images have started loading
     const t = setTimeout(runIntro, 120);
     return () => clearTimeout(t);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -137,7 +162,6 @@ export default function SocialFanDeck() {
 
   return (
     <section className={styles.section}>
-      {/* Fan deck */}
       <div className={styles.deckWrap}>
         {CARD_IMAGES.map((src, i) => (
           <div
@@ -145,31 +169,28 @@ export default function SocialFanDeck() {
             className={styles.card}
             ref={el => { cardRefs.current[i] = el; }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <Image src={src} alt="" fill sizes="160px" draggable={false} style={{ objectFit: 'cover', pointerEvents: 'none', userSelect: 'none' }} />
+            <Image
+              src={src}
+              alt=""
+              fill
+              sizes="160px"
+              draggable={false}
+              style={{ objectFit: 'cover', pointerEvents: 'none', userSelect: 'none' }}
+            />
           </div>
         ))}
       </div>
 
-      {/* Heading */}
       <div className={styles.headingBlock}>
         <span className={styles.headingRegular}>what's up</span>
         <span className={styles.headingSerif}>On Socials</span>
       </div>
 
-      {/* Intro line */}
       <p className={styles.introText}>Follow along on social media</p>
 
-      {/* Social links */}
       <nav className={styles.links}>
         {SOCIAL_LINKS.map(({ label, href }) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
+          <a key={label} href={href} target="_blank" rel="noopener noreferrer" className={styles.link}>
             {label}
           </a>
         ))}

@@ -1,5 +1,6 @@
 /* Default light mode */
 :root {
+  --navbar-height: 72px;
   --background: #F2F2F2;
   --foreground: #0a0a0a;
   --lvl-0: #161b22;

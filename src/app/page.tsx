@@ -55,7 +55,7 @@ export default function Hero() {
       <div className={styles.heroSection}>
         <p className={styles.heroTitle} ref={titleRef}>portfolio</p>
         <div className={styles.heroImageGroup}>
-          <h2 id={styles.liner}>Full-stack developer & designer</h2>
+          <h2 id={styles.liner}>full-stack developer & designer</h2>
           <Image
               className={styles.heroImage}
               src="/assets/profile_pic.png"

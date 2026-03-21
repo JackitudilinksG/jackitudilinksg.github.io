@@ -59,7 +59,7 @@
 .hero {
   position:    relative;
   width:       100%;
-  height:      90vh;
+  height:      calc(100vh - 72px);
   min-height:  520px;
   overflow:    hidden;
   display:     flex;
@@ -321,7 +321,7 @@
 .heroTypographic {
   position:        relative;
   width:           100%;
-  min-height:      100vh;
+  min-height:      calc(100vh - 72px);
   display:         flex;
   flex-direction:  column;
   justify-content: center;
@@ -442,6 +442,7 @@
 /* Push page content down so it isn't hidden under the fixed ticker */
 .hasMarquee {
   padding-top: 32px;
+  min-height: calc(100vh - 72px - 32px);
 }
 
 /* Make the typographic hero extra tall on marquee pages for breathing room */
@@ -774,9 +775,8 @@
 /* ── § 1  PANELS HERO — three-column split ─────────────────────────────────── */
 .heroPanels {
   display:     grid;
-  /* Left orange panel | Centre photo | Right cream panel */
   grid-template-columns: 1fr 1.6fr 1fr;
-  height:      90vh;
+  height:      calc(100vh - 72px);
   min-height:  540px;
   position:    relative;
 }
