@@ -1,0 +1,66 @@
+/* ── Outer container ──────────────────────────────────────────────────────── */
+.container {
+  position:   relative;
+  width:       100%;
+  max-width:   860px;
+  margin:      0 auto;
+  cursor:      none;          /* hide the default cursor inside the zone */
+  border-radius: 12px;
+  overflow:    hidden;
+  /* Subtle shadow so it lifts off the page */
+  box-shadow:  0 8px 40px rgba(0, 0, 0, 0.12);
+  border:      1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* ── PDF iframe ───────────────────────────────────────────────────────────── */
+.pdf {
+  display:    block;
+  width:      100%;
+  height:     clamp(500px, 80vh, 1000px);
+  border:     none;
+  pointer-events: none;   /* let clicks fall through to the overlay */
+}
+
+/* ── Transparent click-capture overlay ───────────────────────────────────── */
+.overlay {
+  position: absolute;
+  inset:    0;
+  z-index:  2;
+  cursor:   none;
+}
+
+/* ── Tooltip ──────────────────────────────────────────────────────────────── */
+.tooltip {
+  position:       absolute;
+  z-index:        10;
+  background:     #0a0a0a;
+  color:          #f5f5f5;
+  font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:      0.78rem;
+  font-weight:    500;
+  letter-spacing: 0.02em;
+  padding:        7px 14px;
+  border-radius:  100px;
+  white-space:    nowrap;
+  pointer-events: none;
+  /* hidden by default */
+  opacity:        0;
+  transform:      scale(0.88);
+  transition:     opacity 0.18s ease, transform 0.18s ease;
+}
+
+.tooltipVisible {
+  opacity:   1;
+  transform: scale(1);
+}
+
+/* ── Dark mode ────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .container {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:   0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .tooltip {
+  background: #f0eeea;
+  color:      #0a0a0a;
+}

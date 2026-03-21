@@ -26,8 +26,8 @@ export default function Navbar() {
                     <Image
                         src="/assets/Logo_colour.png"
                         alt="Description of the image"
-                        width={33.8}
-                        height={29.5}
+                        width={34}
+                        height={30  }
                         priority
                     />
                 </Link>

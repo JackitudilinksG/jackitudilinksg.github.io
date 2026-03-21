@@ -1,0 +1,130 @@
+.page {
+  min-height: 100vh;
+  padding:    4rem 2rem 6rem;
+  max-width:  1280px;
+  margin:     0 auto;
+}
+
+.layout {
+  display:               grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap:                   4rem;
+  align-items:           start;
+}
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+.left {
+  position: sticky;
+  top:      100px;
+}
+
+.right {
+  padding-top:    0.5rem;
+  display:        flex;
+  flex-direction: column;
+  gap:            1.5rem;
+}
+
+.label {
+  font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:      0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color:          color-mix(in srgb, var(--foreground) 45%, transparent);
+  margin:         0;
+}
+
+/* ── Filter pills ─────────────────────────────────────────────────────────── */
+.filters {
+  display:  flex;
+  gap:      0.5rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:      0.72rem;
+  font-weight:    500;
+  letter-spacing: 0.06em;
+  padding:        0.3rem 0.9rem;
+  border-radius:  100px;
+  border:         1px solid color-mix(in srgb, var(--foreground) 18%, transparent);
+  background:     transparent;
+  color:          color-mix(in srgb, var(--foreground) 55%, transparent);
+  cursor:         pointer;
+  transition:     background 0.18s, color 0.18s, border-color 0.18s;
+}
+.filterBtn:hover {
+  color:        var(--foreground);
+  border-color: color-mix(in srgb, var(--foreground) 35%, transparent);
+}
+.filterActive {
+  background:   var(--foreground);
+  color:        var(--background);
+  border-color: var(--foreground);
+}
+
+/* ── Skill list ───────────────────────────────────────────────────────────── */
+.skillList {
+  display:        flex;
+  flex-direction: column;
+  gap:            1.1rem;
+}
+
+.skillRow { display: flex; flex-direction: row; gap: 5px; }
+
+.skillMeta {
+  display:     flex;
+  align-items: center;
+  gap:         0.5rem;
+}
+
+.skillName {
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:   0.9rem;
+  font-weight: 500;
+  color:       var(--foreground);
+  flex:        1;
+}
+
+.skillCatPill {
+  font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size:      0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding:        2px 8px;
+  border-radius:  100px;
+  font-weight:    500;
+}
+
+.skillPct {
+  font-family:    'DM Mono', 'Courier New', monospace;
+  font-size:      0.7rem;
+  color:          color-mix(in srgb, var(--foreground) 45%, transparent);
+  min-width:      30px;
+  text-align:     right;
+}
+
+/* ── Animated bar ─────────────────────────────────────────────────────────── */
+.barTrack {
+  width:         100%;
+  height:        4px;
+  border-radius: 2px;
+  background:    color-mix(in srgb, var(--foreground) 8%, transparent);
+  overflow:      hidden;
+}
+
+.barFill {
+  height:           100%;
+  border-radius:    2px;
+  transform-origin: left;
+  animation:        barGrow 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
