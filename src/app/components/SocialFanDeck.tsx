@@ -17,12 +17,12 @@ const SOCIAL_LINKS: SocialLink[] = [
 
 const CARD_IMAGES = [
   'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=480&q=80',
-  '/assets/hackfest.jpg',
-  '/assets/insta2.webp',
-  '/assets/manthan_speech.jpg',
-  '/assets/random_1.jpg',
-  '/assets/insta1.webp',
-  '/assets/insta3.jpg',
+  '/assets/socialFanDeck/hackfest.jpg',
+  '/assets/socialFanDeck/insta2.webp',
+  '/assets/socialFanDeck/manthan_speech.jpg',
+  '/assets/socialFanDeck/random_1.jpg',
+  '/assets/socialFanDeck/insta1.webp',
+  '/assets/socialFanDeck/insta3.jpg',
 ];
 
 // ─── Dynamic state generation ─────────────────────────────────────────────────
