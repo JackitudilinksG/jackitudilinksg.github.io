@@ -53,8 +53,8 @@ export interface ProjectContent {
 
 export const PROJECTS: ProjectContent[] = [
   {
-    slug: 'Atlas',
-    heroImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=80',
+    slug: 'atlas',
+    heroImage: '/assets/manthan/DSC00469.JPG',
     heroImageAlt: 'Mountain landscape at dawn',
     type: 'Mobile Application Development',
     date: 'Dec 2025',
@@ -68,7 +68,7 @@ export const PROJECTS: ProjectContent[] = [
       { label: 'Shipped',            value: 'Q4 2025' },
     ],
     // replace with flowchart
-    featureImage: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1400&q=80',
+    featureImage: '/assets/manthan/flowchart.png',
     featureImageAlt: 'Code on screen',
     featureCaption: 'The new flow reduced average steps from 11 to 5.',
     sections: [
@@ -95,22 +95,22 @@ export const PROJECTS: ProjectContent[] = [
       },
     ],
     gallery: [
-      { src: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80', alt: 'Mobile mockup 1' },
-      { src: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&q=80', alt: 'Mobile mockup 2' },
-      { src: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&q=80', alt: 'Dashboard UI' },
+      { src: '/assets/manthan/DSC00469.JPG', alt: 'Mobile mockup 1' },
+      { src: '/assets/manthan/team_prize_3.JPG', alt: 'Mobile mockup 2' },
+      { src: '/assets/manthan/red_light.jpg', alt: 'Dashboard UI' },
     ],
     closingHeading: 'What we learned',
-    closingBody: "The biggest unlock was removing features, not adding them. Simplicity isn't the absence of work — it's the result of it.",
-    tags: ['UX Research', 'Interaction Design', 'Copy Strategy', 'A/B Testing'],
+    closingBody: "The biggest hurdle for people with hearing impairment isn't the lack of solutions, but the cost of these solutions. We aim to bridge this gap by providing an affordable solution.",
+    tags: ['Mobile Deployment', 'Audio Engineering', 'Device Driver Management', 'Native Development', 'Unit Testing'],
   },
 
   {
-    slug: 'project-beta',
+    slug: 'spotify-jam',
     heroImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80',
     heroImageAlt: 'Circuit board close-up',
-    type: 'Mobile App',
-    date: 'Jan 22, 2025',
-    title: 'Project Beta: Real-time data dashboard',
+    type: 'Web Application',
+    date: 'Feb 2025',
+    title: 'Spotify Jam Web Application',
     tagline: 'IoT sensor data, live — anywhere, offline-capable.',
     overviewBody:
       'A cross-platform mobile app for monitoring IoT sensor streams. Live charts update at 250ms intervals. Offline caching ensures field engineers keep working when connectivity drops.',

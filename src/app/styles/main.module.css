@@ -1,5 +1,3 @@
-/* ── Existing styles ─────────────────────────────────────────────────────── */
-
 .topText {
   height:          auto;
   min-height:      15dvh;
@@ -23,7 +21,10 @@
   flex-wrap:        wrap;
 }
 
-.date           { font-size: 14px; }
+.date {
+  font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+}
 
 .ctaContent {
   display:        flex;
@@ -43,8 +44,8 @@
 }
 
 .ctaButton {
-  color:            var(--foreground);
-  background-color: linear-gradient(90deg, #eb9925 0%, #e42705 100%);
+  color:            white;
+  background: linear-gradient(90deg, #eb9925 0%, #e42705 100%);
   padding:          10px;
   font-size:        10px;
   cursor:           pointer;

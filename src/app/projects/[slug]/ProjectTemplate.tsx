@@ -475,7 +475,8 @@ export default function ProjectTemplate({ project, theme }: Props) {
               <Image
                 src={featureImage}
                 alt={featureImageAlt ?? ''}
-                fill
+                width={0}
+                height={0}
                 sizes="(max-width: 900px) 100vw, 1280px"
                 className={styles.featureImg}
               />

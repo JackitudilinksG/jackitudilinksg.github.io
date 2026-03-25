@@ -182,12 +182,22 @@
 @media (max-width: 900px) { .feature { padding: 0 2rem; } }
 
 .featureFigure { margin: 0; }
-.featureImgWrap { position: relative; width: 100%; aspect-ratio: 21 / 9; border-radius: 12px; overflow: hidden; }
-.featureImg    { object-fit: cover; }
+.featureImgWrap { position: relative; width: 100%; border-radius: 12px; overflow: hidden; }
+.featureImg {
+  width:         100% !important;
+  height:        auto !important;
+  position:      static !important;
+  object-fit:    cover;
+  display:       block;
+  border-radius: 12px;
+}
 .featureCaption {
-  font-family: var(--pt-body-font); font-size: 0.75rem;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--pt-muted); margin-top: 0.75rem;
+  font-family: var(--pt-body-font);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pt-muted);
+  margin-top: 0.75rem;
 }
 
 

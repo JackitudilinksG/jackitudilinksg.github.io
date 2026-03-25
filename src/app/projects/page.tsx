@@ -4,16 +4,16 @@ import styles from './projects.module.css';
 
 const PROJECTS = [
   {
-    slug: 'Atlas',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
-    type: 'Web Design',
+    slug: 'atlas',
+    image: '/assets/manthan/DSC00469.JPG',
+    type: 'Mobile App Development',
     date: 'Mar 10, 2025',
-    title: 'Project Alpha: Redesigning the onboarding experience',
+    title: 'Project Atlas',
     description:
-      'A full redesign of the user onboarding flow, reducing drop-off by 40% through clearer copy and progressive disclosure.',
+      'ATLAS by HearWell is an adaptive audio enhancement platform, making hearing support accessible for those suffering from hearing loss.',
   },
   {
-    slug: 'project-beta',
+    slug: 'spotify-jam',
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
     type: 'Mobile App',
     date: 'Jan 22, 2025',
