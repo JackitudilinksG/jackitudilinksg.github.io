@@ -24,33 +24,6 @@ A personal portfolio website built with Next.js, showcasing my projects, contrib
 - GitHub GraphQL API — live contribution data
 - Vercel — deployment
 
-## Getting Started
-
-Clone the repo and install dependencies:
-
-```bash
-git clone https://github.com/JackitudilinksG/jackitudilinksg.github.io.git
-cd jackitudilinksg.github.io
-npm install
-```
-
-Create a `.env.local` file in the root with the following:
-
-```
-GITHUB_TOKEN=your_github_token
-GITHUB_USERNAME=your_github_username
-```
-
-> Your GitHub token needs the `read:user` scope. Generate one at GitHub → Settings → Developer Settings → Personal Access Tokens.
-
-Run the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 ## Project Structure
 
 ```
