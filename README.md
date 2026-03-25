@@ -2,7 +2,7 @@
 
 A personal portfolio website built with Next.js, showcasing my projects, contributions, and contact information.
 
-🌐 **Live Site:** [your-url-here.vercel.app](https://your-url-here.vercel.app)
+🌐 **Live Site:** [dericjojo.vercel.app](https://dericjojo.vercel.app)
 
 ![Portfolio Preview](./preview.png)
 
