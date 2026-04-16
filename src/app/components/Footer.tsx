@@ -8,8 +8,8 @@ export default function Footer() {
                 <div className={styles.column}>
                     <p className={styles.columnLabel}>Sections</p>
                     <Link href="/">Home</Link>
-                    <Link href="/about">About</Link>
                     <Link href="/projects">Projects</Link>
+                    <Link href="/about">About</Link>
                     <Link href="/contact">Contact</Link>
                 </div>
                 <div className={styles.column}>
