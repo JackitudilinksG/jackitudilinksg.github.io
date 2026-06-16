@@ -1,10 +1,11 @@
-'use client';
+"use client";
 
 import SocialFanDeck from '../components/SocialFanDeck';
 import ContactForm   from '../components/ContactForm';
 import styles from './contact.module.css';
 
 export default function ContactPage() {
+
   return (
     <main className={styles.page}>
       <header className={styles.header}>
@@ -20,7 +21,7 @@ export default function ContactPage() {
 
       <SocialFanDeck />
 
-      <ContactForm />
+      <ContactForm /> 
     </main>
   );
 }

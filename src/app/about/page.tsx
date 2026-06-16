@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import ResumeViewer from '../components/resumeViewer';
 import styles from './about.module.css';
+import { useKeySequence } from '../hooks/useKeySequence';
 
 const SKILLS = [
   // Frontend
@@ -32,11 +33,18 @@ const CAT_COLOURS: Record<string, string> = {
   Design:   '#EC4899',
 };
 
+const secretCode = ['m', 'a', 'g', 'i', 'c'];
+
 export default function About() {
   const [active, setActive] = useState('All');
   const [hovered, setHovered] = useState<string | null>(null);
 
   const visible = active === 'All' ? SKILLS : SKILLS.filter(s => s.cat === active);
+
+  useKeySequence(secretCode, () => {
+    alert('You found the secret on this specific page!');
+    // Trigger your Easter egg, modal, or redirect here
+  });
 
   return (
     <main className={styles.page}>
