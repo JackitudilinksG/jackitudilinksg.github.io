@@ -43,11 +43,19 @@ export default function About() {
 
   useKeySequence(secretCode, () => {
     alert('You found the secret on this specific page!');
-    // Trigger your Easter egg, modal, or redirect here
+    //startRegistration();
   });
+
+  async function startRegistration() {
+    const res = await fetch('/api/cms/webauthn/register-options');
+    const options = await res.json();
+    console.dir('Registration options:', options);
+  }
 
   return (
     <main className={styles.page}>
+      
+        <button onClick={startRegistration}>Start Registration</button>
       <div className={styles.layout}>
 
         {/* Left — resume viewer */}

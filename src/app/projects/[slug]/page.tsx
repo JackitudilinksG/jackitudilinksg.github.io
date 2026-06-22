@@ -1,23 +1,29 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getProject } from './projectData';
 import { getTheme }   from './themes';
 import ProjectTemplate from './ProjectTemplate';
+import { getProjectBySlug, getAllProjectSlugs }
+  from '../../../lib/services/projects.service';
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProjectBySlug(slug);
   return {
     title:       project?.title       ?? 'Project',
     description: project?.overviewBody ?? '',
   };
 }
 
+export async function generateStaticParams() {
+  const slugs = await getAllProjectSlugs();
+  return slugs.map((slug:unknown) => ({ slug }));
+}
+
 export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) notFound();
 
   const theme = getTheme(slug);
